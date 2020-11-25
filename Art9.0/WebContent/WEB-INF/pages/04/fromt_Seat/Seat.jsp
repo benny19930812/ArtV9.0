@@ -211,7 +211,7 @@
  				$(this).attr("src", "<c:url value='/images/04/sofaTick.png' />")		
  				//新增td		
  				$("#selectseat").append("<td class='seat' id='td"+$(this).attr('id')+"'>"+$(this).attr('id')+"<td>");
- 				$("#selectseat").append("<input type='hidden' name='seat' value='"+$(this).attr('id')+"'/>");				
+ 				$("#selectseat").append("<input type='hidden' id='hide"+$(this).attr('id')+"' name='seat' value='"+$(this).attr('id')+"'/>");				
 				//顯示數量
  				$("#selectnum").text($(".seat").length);
  				$("#selectnum2").val($(".seat").length); 
@@ -224,9 +224,11 @@
  			} else {
  	 			//換回空位
  	 			var id ="td"+$(this).attr('id');
+ 	 			var id2 ="hide"+$(this).attr('id');
  				$(this).attr("src", "<c:url value='/images/04/sofaOff.png' />")
 //   				$("td").remove("#"+id);
  				$("#"+id).remove();
+ 				$("#"+id2).remove();
  				$("#selectnum").text($(".seat").length);
  			}
  		});    
