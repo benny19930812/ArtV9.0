@@ -100,7 +100,7 @@
 	<tr>
 		<td>已選擇座位數量</td>
 		<td id="selectnum"></td>
-		<input type="hidden" value="" id="selectnum2" name="selectnum2"/>
+		<input type="hidden" value="" id="seatnum" name="seatnum"/>
 	</tr>
 	</table>
 
@@ -184,7 +184,7 @@
 		</tr>
 	</table>
 	
-	<br><br><input type="submit" class="btn btn-outline-info" value="下一步">
+	<br><br><input type="submit" id="submit" class="btn btn-outline-info" value="下一步" onclick="checknum()">
 	</form>
 </div>	
 	
@@ -214,7 +214,7 @@
  				$("#selectseat").append("<input type='hidden' id='hide"+$(this).attr('id')+"' name='seat' value='"+$(this).attr('id')+"'/>");				
 				//顯示數量
  				$("#selectnum").text($(".seat").length);
- 				$("#selectnum2").val($(".seat").length); 
+//  				$("#seatnum").val($(".seat").length); 
  				var tickstring=$("#ticketnum").text();
  				var ticknum =parseInt(tickstring);			
  				if ($(".seat").length ==parseInt($("#ticketnum").text())) {
@@ -230,51 +230,26 @@
  				$("#"+id).remove();
  				$("#"+id2).remove();
  				$("#selectnum").text($(".seat").length);
+//  				$("#seatnum").val($(".seat").length); 
  			}
- 		});    
-		
-//  	   $(".sofatick").mouseover(function() {
-// 			$(this).css("border-color", "#FFAC55");
-// 		}).mouseout(function() {
-// 			$(this).css("border-color", "#FFFFFF")
-// 		}).click(function() {
-// 			$("td").remove(".seat");
-// 			$("#selectseat").empty("#tdA5");
-//  			$(".seat").remove();
-//  				$("#selectnum").text($(".seat").length);
-// 				$(this).attr("src", "<c:url value='/images/04/sofaOff.png' />")
-// 				$(this).attr("class","sofa")
-// 		});    
- 
-			//游標移至圖片顯示座位名
-// 			$('.sofa').each(function() {
-// 				$(this).mouseover(function() {
-// 					$("#showseat").text($(this).attr('id'));
-// 				});
-// 			});
-			//顯示選取座位名
-// 				$(".sofa").click(function() {
-// 					if ($(this).attr("src") == "<c:url value='/images/04/sofaTick.png' />") {
-// 					$("#selectseat").append("<td class='seat' id='tdA5'>"+$(this).attr('id')+"<td>");
-// // 					$("#selectseat").append("<td class='seat' id=td"+$(this).attr('id')+">"+$(this).attr('id')+"<td>");
-// 					$("#selectnum").text($(".seat").length);
-// 		 			}else {
-// 		 			$(".seatid").remove();
-// 		 			}
-// 				});
-				
-// 				$(".sofatick").click(function() {
-// 				var $id =$(this).attr('id');			
-// 					$(".seat").empty("#tdA5");
-// 					$(".seat").remove();
-// 		 			$("#selectnum").text($(".seat").length);
-			
-// 				});
+ 		});    	
+
+
+ 	   $("#submit").click(function(){
+ 		  	var selectnum = $(".seat").length;
+			var ticketnum = parseInt($("#ticketnum").text());
+			var notselect=ticketnum-selectnum;
+			if (selectnum < ticketnum ) {
+				alert("尚有"+notselect+"個座位未劃位");
+ 	           return false;
+ 	        }
+ 	  }); 
+
 
 		</script> 
-<script>
 
-</script>
+
+
 
 </body>
 </html>

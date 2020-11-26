@@ -1,4 +1,4 @@
-package tw.group4._04_.front.shopcart.model;
+package tw.group4._04_.front.orderlist.model;
 
 import java.io.Serializable;
 
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Entity  //宣告此class為javabean
 @Table(name = "TICKETORDERLIST")
-@Component("Shoppingcart")
-public class Shoppingcart implements Serializable {
+@Component("Orderlist")
+public class Orderlist implements Serializable {
 
 	@Id // 設定primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // primary key的產生方式 有auto、IDENTITY
@@ -33,7 +33,7 @@ public class Shoppingcart implements Serializable {
 	private int TOTALPRICE;
 	private String seats[];
 
-	public Shoppingcart(){
+	public Orderlist(){
 		
 	}
 

@@ -85,32 +85,49 @@ private DataSource dataSource;
 	}
 	
 
-	//創Orderlist表格
+	//創TicketOrderlist表格
 	public void createTableOL() {
 		
 		try (Connection connection = getDataSource().getConnection();) {
 			Statement stmt = connection.createStatement();
 			
-		    String sql = "CREATE TABLE ORDERLIST (ORDERID VARCHAR2(1000 BYTE), NAME VARCHAR2(1000 BYTE), EMAIL VARCHAR2(1000 BYTE), TEL VARCHAR2(1000 BYTE), ADDRESS VARCHAR2(1000 BYTE), TOTALPRICE NUMBER)";
+//		    String sql = "CREATE TABLE ACTORDERLIST (ORDERID VARCHAR2(1000 BYTE), NAME VARCHAR2(1000 BYTE), EMAIL VARCHAR2(1000 BYTE), TEL VARCHAR2(1000 BYTE), ADDRESS VARCHAR2(1000 BYTE), TOTALPRICE NUMBER)";
+		    String sql = "CREATE TABLE TICKETORDERLIST ("
+		    		+ "ORDERPK  integer GENERATED as IDENTITY ,"
+		    		+ "MEMBERID VARCHAR2(1000 BYTE),"
+		    		+ "ORDERID VARCHAR2(1000 BYTE),"
+		    		+ "NAME VARCHAR2(1000 BYTE),"
+		    		+ "EMAIL VARCHAR2(1000 BYTE),"
+		    		+ "TEL VARCHAR2(1000 BYTE) ,"
+		    		+ "ADDRESS VARCHAR2(1000 BYTE),"
+		    		+ "ACT_ID NUMBER,"
+		    		+ "TITLE VARCHAR2(1000 BYTE),"
+		    		+ "TICKETCATEGORY VARCHAR2(1000 BYTE),"
+		    		+ "TICKET_NUM NUMBER,"
+		    		+ "TOTALPRICE NUMBER,"
+		    		+ "seats VARCHAR2(1000 BYTE))";
 	    
+//		    MEMBERID VARCHAR2(1000 BYTE),ORDERID VARCHAR2(1000 BYTE),NAME VARCHAR2(1000 BYTE),EMAIL VARCHAR2(1000 BYTE),TEL,ADDRESS VARCHAR2(1000 BYTE),ACT_ID NUMBER,TITLE VARCHAR2(1000 BYTE),TICKETCATEGORY VARCHAR2(1000 BYTE),TICKET_NUM NUMBER,TOTALPRICE NUMBER,seats VARCHAR2(1000 BYTE)
+		    
+
 		    stmt.executeUpdate(sql);
-		    System.out.println("Orderlist表格已建立");
+		    System.out.println("TicketOrderlist表格已建立");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	//刪Orderlist表格
+	//刪ActOrderlist表格
 	public void dropTableOL() {
 		
 		try (Connection connection = getDataSource().getConnection();) {
 			Statement stmt = connection.createStatement();
 			
-		    String sql = "DROP TABLE ORDERLIST CASCADE CONSTRAINTS";
+		    String sql = "DROP TABLE TICKETORDERLIST CASCADE CONSTRAINTS";
 	    
 		    stmt.executeUpdate(sql);
-		    System.out.println("ORDERLIST表格已刪除");
+		    System.out.println("TicketOrderlist表格已刪除");
 
 		} catch (SQLException e) {
 			e.printStackTrace();

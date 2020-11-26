@@ -24,7 +24,7 @@
 				<th>總金額</th>
 
 			</tr>
-			<c:forEach items="${getorlist}" var="show" varStatus="idx">
+			<c:forEach items="${list}" var="show" varStatus="idx">
 				<tr>
 					<td>${show.orderid}</td>
 					<td>${show.name}</td>

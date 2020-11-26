@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import tw.group4._04_.back.model.ShowBean2;
+import tw.group4._04_.front.shopcart.model.Shoppingcart;
+
 
 @Repository("SeatBeanDAO")
 public class SeatBeanDAO {
@@ -18,6 +21,8 @@ public class SeatBeanDAO {
 	private SessionFactory sessionFacory;
 	private Session session;
 
+	@Autowired
+	private Shoppingcart shoppingcart;
 
 //	public SeatBeanDAO() {
 //	
@@ -33,20 +38,19 @@ public class SeatBeanDAO {
 	// 新增
 	public SeatBean insert(SeatBean SeatBean) {
 		Session session = sessionFacory.getCurrentSession();
-//		SeatBean resultBean = session.get(SeatBean.class, SeatBean.getACT_NO());
-//		if (resultBean == null) {
+
 			session.save(SeatBean);
 			return SeatBean;
-//		}
-//		return null;
 	}
-
-//	// 查詢
-//	public SeatBean select(int actno) {
-//		Session session = sessionFacory.getCurrentSession();
-//		return session.get(SeatBean.class, actno);
-//	}
 	
+//	// 新增
+//	public SeatBean insertSeat (SeatBean SeatBean) {
+//		Session session = sessionFacory.getCurrentSession();
+//		Query query = session.createQuery("update SEAT set "+SEATA+"=1 where ACT_NO='1'");
+//		query.executeUpdate();
+//
+//		return SeatBean;
+//	}
 	
 	// 查詢  //先將查詢結果放入MAP
 		public Map<String, Integer> select(int actno) {
@@ -106,10 +110,9 @@ public class SeatBeanDAO {
 
 			return SeatMap;
 		}
-
-
-	
-
+		
+		
+		
 	// 修改
 	public SeatBean update(int actno) {
 
@@ -117,7 +120,7 @@ public class SeatBeanDAO {
 		SeatBean SeatBean = session.get(SeatBean.class, actno);
 
 		if (SeatBean != null) {
-//			SeatBean.setACT_TITLE(title);
+//			SeatBean.s
 //			SeatBean.setACT_CATEGORY(category);
 //			SeatBean.setACT_LOCATION(locationName);
 //			SeatBean.setACT_MAINUNIT(mainunit);

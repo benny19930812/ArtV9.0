@@ -18,10 +18,10 @@ public class SeatBeanService {
 		this.seatBeanDAO = seatBeanDAO;
 	}
 
-//	// 新增
-//	public SeatBean insert(SeatBean SeatBean) {
-//		return seatBeanDAO.insert(SeatBean);
-//	}
+	// 新增
+	public SeatBean insert(SeatBean SeatBean) {
+		return seatBeanDAO.insert(SeatBean);
+	}
 
 	// 查詢
 	public Map<String, Integer> select(int actno) {

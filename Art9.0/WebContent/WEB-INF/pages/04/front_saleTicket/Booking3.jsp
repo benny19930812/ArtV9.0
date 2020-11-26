@@ -82,7 +82,7 @@
 	</table><br><br>
 
 
-<form name="order2" action="<c:url value='/04/booking3'/> " method="get">
+<form name="order2" action="<c:url value='/04/SaveCart.ctrl'/> " method="get">
     
     <form name="order" action="" method="get">
     <H1>確認訂單資訊</H1>
@@ -135,6 +135,13 @@
 				
 			</tr>
 			</c:forEach>
+			<tr> 
+				<td >總計:</td>
+				<td ></td>
+				<td ></td>
+				<td >NT$${sessionScope.shoppingcart.TOTALPRICE}</td>
+			
+			</tr>
 			
 		</table>	
      
@@ -164,7 +171,7 @@ $(document).ready(
 
     $("#1").click(function () {
     	if (confirm("是否送出訂單? ")) {
-    		window.location ="<c:url value='/_04_ShopCart/DelectCart'/>" 
+    		window.location ="<c:url value='/04/SaveCart.ctrl'/>" 
     	} else {
     		return false;
     	}

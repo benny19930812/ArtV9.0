@@ -15,12 +15,12 @@ public class QRCodeToolTest {
 // 二維碼字串
 		String qrCodeData = "https://www.google.com/";
 // 二維碼名稱
-		String filePath = "QRCode.png";
+		String filePath = "QRcodeOutput/QRCode.png";
 // 字元編碼
 		String charset = "UTF-8"; // "ISO-8859-1"
 		Map hintMap = new HashMap();
 		hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-		QRCodeTool.createQRCode(qrCodeData, filePath, charset, hintMap, 400, 400);
+		QRCodeTool.createQRCode(qrCodeData, filePath, charset, hintMap, 200, 200);
 		System.out.println("二維碼影象建立成功!");
 
 		System.out.println("讀取二維碼資料: " + QRCodeTool.readQRCode(filePath, charset, hintMap));

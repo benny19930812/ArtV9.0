@@ -36,7 +36,7 @@ public class SeatCrud {
 	@Autowired
 	private Shoppingcart shoppingcart;
 	
-
+	//查詢座位
 	@RequestMapping(path = "/04/seatSearch.ctrl", method = RequestMethod.GET)
 	public String seatSearch(Model model ,HttpSession session,String ticketcategry,Integer ticketnum) {
 //		int actid =Integer.parseInt((String) session.getAttribute("actid"));
@@ -52,4 +52,20 @@ public class SeatCrud {
 		model.addAttribute("seat", seatMap);
 		return IdentityFilter.loginID+"04/fromt_Seat/Seat";
 	}
+//	//存入訂單座位
+//	@RequestMapping(path = "/04/seatSearch.ctrl", method = RequestMethod.GET)
+//	public String seatIInsert(Model model ,HttpSession session,String ticketcategry,Integer ticketnum) {
+////		int actid =Integer.parseInt((String) session.getAttribute("actid"));
+//		int actid = (int) session.getAttribute("actid");
+//		shoppingcart.setACT_ID(actid);
+//		shoppingcart.setTITLE((String)(session.getAttribute("title")));
+//		shoppingcart.setTICKETCATEGORY(ticketcategry);
+//		shoppingcart.setTICKET_NUM(ticketnum);
+//		//shoppingcart存入session
+//		session.setAttribute("shoppingcart",shoppingcart);
+//		Map<String, Integer>seatMap=seatBeanService.select(actid);
+//		System.out.println(seatMap);
+//		model.addAttribute("seat", seatMap);
+//		return IdentityFilter.loginID+"04/fromt_Seat/Seat";
+//	}
 }

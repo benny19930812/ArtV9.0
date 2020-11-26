@@ -1,6 +1,7 @@
 package tw.group4._04_.front.shopcart.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import tw.group4._04_.front.seat.model.SeatBean;
 import tw.group4._04_.front.seat.model.SeatBeanService;
 import tw.group4._04_.front.shopcart.model.Shoppingcart;
+import tw.group4._04_.front.shopcart.model.ShoppingcartService;
 import tw.group4._35_.login.model.WebsiteMember;
 import tw.group4.util.IdentityFilter;
 
@@ -30,6 +32,8 @@ public class ShoppingCartCtrl {
 		private SeatBeanService seatBeanService;
 		@Autowired
 		private Shoppingcart shoppingcart;
+		@Autowired
+		private ShoppingcartService shoppingcartService;
 		
 		@RequestMapping(path = "/04/booking.ctrl", method = RequestMethod.GET)
 		public String booking(Model model ,HttpSession session,HttpServletRequest Request) {
@@ -59,8 +63,10 @@ public class ShoppingCartCtrl {
 		public String shoppingcart(Model model ,HttpSession session,HttpServletRequest Request) {
 			List<String> seat = new ArrayList<String>();
 			String[] seats= Request.getParameterValues("seat");
+//			int seatnum=Integer.parseInt(Request.getParameter("seatnum"));
 			shoppingcart=(Shoppingcart) session.getAttribute("shoppingcart");
 			shoppingcart.setSeats(seats);
+//			shoppingcart.setSeatnum(seatnum);
 			
 			
 			return IdentityFilter.loginID+"04/front_saleTicket/Booking2";
@@ -73,6 +79,16 @@ public class ShoppingCartCtrl {
 			if (shoppingcart == null) {				
 				return "redirect:/04/index";
 			}
+			String ticketcategory =shoppingcart.getTICKETCATEGORY();
+			System.out.println(ticketcategory);
+			if("全票".equals(ticketcategory)) {
+				int Totalprice=shoppingcart.getTICKET_NUM()*2000;	
+				shoppingcart.setTOTALPRICE(Totalprice);
+			}else {
+				int Totalprice=shoppingcart.getTICKET_NUM()*1000;	
+				shoppingcart.setTOTALPRICE(Totalprice);
+			}
+			
 			shoppingcart.setNAME(Request.getParameter("name"));
 			shoppingcart.setEMAIL(Request.getParameter("email"));
 			shoppingcart.setTEL(Request.getParameter("tel"));
@@ -102,6 +118,9 @@ public class ShoppingCartCtrl {
 			 seatlist.toArray(seats2);
 			 //塞回shoppingcart
 			 shoppingcart.setSeats(seats2);
+			 //取得座位數
+			 int TicketNUM = shoppingcart.getTICKET_NUM();
+			 shoppingcart.setTICKET_NUM(TicketNUM-1);
 			 
 			
 			return IdentityFilter.loginID+"04/front_saleTicket/Booking2";
@@ -114,6 +133,27 @@ public class ShoppingCartCtrl {
 			
 			return IdentityFilter.loginID+"04/front_saleTicket/Booking2";
 		}	
+		
+		//儲存訂單
+		@RequestMapping(path = "/04/SaveCart.ctrl", method = RequestMethod.GET)
+		public String SaveCart(Model model ,HttpSession session,HttpServletRequest Request) {
+			
+			shoppingcart=(Shoppingcart) session.getAttribute("shoppingcart");
+			String orderlistID=shoppingcartService.getOrderIdByTime();	
+			String[] seats = shoppingcart.getSeats();
+			for (String s:seats) {
+			System.out.println(s);	
+			}
+		     
+//			String arrayString = Arrays.toString(shoppingcart.getSeats());
+//			shoppingcart.setSeats(seats);
+			shoppingcart.setORDERID(orderlistID);
+			shoppingcartService.insert(shoppingcart);
+			System.out.println("訂單已成立");
+			
+			return IdentityFilter.loginID+"04/front_Orderlist/ThxOrder";
+		}	
+			
 	
 	
 	
