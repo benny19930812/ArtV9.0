@@ -13,7 +13,7 @@ td {
 	width: 100px;
 }
 
-.halfnum {
+.ticketnum {
 	width: 30px;
 }
 
@@ -55,7 +55,7 @@ td {
 							<h1 class="text-white">
 								AAART Shop
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="<c:url value='/14/shopListController.ctrl' />"> Shop</a></p>
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="<c:url value='' />"> Shop</a></p>
 						</div>											
 					</div>
 				</div>
@@ -129,74 +129,13 @@ td {
 				<td>自行劃位</td>
 				<td id="price">NT$2000</td>
 				<td><input type="button" value="-" name="minus" class="" id="minus"> 					
-					<input type="text" name="ticketnum" id="halfnum" class="halfnum"value="" readonly="readonly"> 
+					<input type="text" name="ticketnum" id="ticketnum" class="ticketnum"value="" readonly="readonly"> 
 					<input type="button" value="+" name="plus" class="" id="plus">
 				</td>
 			</tr>
-<!-- 			<tr>  -->
-<%-- 				<td class="title">${sessionScope.title}</td> --%>
-<!-- 				<td>全票</td> -->
-<!-- 				<td>自行劃位</td> -->
-<!-- 				<td>NT$2000</td> -->
-<!-- 				<td><input type="button" value="-" name="minus2" class="" id="minus2"> -->
-<!-- 					<input type="text" name="adultnum"id="adultnum" class="adultnum" value="" readonly="readonly">  -->
-<!-- 					<input type="button" value="+" name="plus2"class="" id="plus2" > -->
-<!-- 				</td> -->
-<!-- 			</tr> -->
+
 		</table>
-		
-		
-		
-		
-		
-		
-<!-- 		<table class="table table-bordered"> -->
-<!-- 			<tr> -->
-<!-- 				<td class="title">節目名稱</td> -->
-<!-- 				<td>票種</td> -->
-<!-- 				<td>數量</td> -->
-<!-- 				<td>價格</td> -->
-<!-- 				<td class="price2">總價</td> -->
 
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<%-- 				<td class="title">${title}</td> --%>
-<!-- 				<td>全票</td> -->
-<!-- 				<td><input type="button" value="-" name="minus" class="" -->
-<!-- 					id="minus">  -->
-<!-- 					<input type="text" name="adultnum" -->
-<!-- 					id="adultnum" class="adultnum" value="" readonly="readonly">  -->
-<!-- 					<input type="button" value="+" name="plus" class="" id="plus"> -->
-<!-- 				</td> -->
-
-<!-- 				<td name="price" class="price" id="price">NT$1000</td> -->
-<!-- 				<td>NT$ <input type="text" name="total1" id="total1" -->
-<!-- 					class="total1" value="0" readonly="readonly" /> -->
-<!-- 				</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<%-- 				<td>${title}</td> --%>
-<!-- 				<td>半票</td> -->
-<!-- 				<td><input type="button" value="-" name="minus2" class="" -->
-<!-- 					id="minus2"> <P name="orderNum" id="orderNum" class="orderNum"></P> -->
-<!-- 					<input type="text" name="halfnum" id="halfnum" class="halfnum" -->
-<!-- 					value="" readonly="readonly">  -->
-<!-- 					<input type="button" value="+" name="plus2" -->
-<!-- 					class="" id="plus2" ></td> -->
-<!-- 				<td name="price" class="price" id="price">NT$500</td> -->
-<!-- 				<td>NT$ <input type="text" name="total2" id="total2" -->
-<!-- 					class="total2" value="0" readonly="readonly" /> -->
-<!-- 				</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td>總計</td> -->
-<!-- 				<td></td> -->
-<!-- 				<td></td> -->
-<!-- 				<td></td> -->
-<!-- 				<td>NT$ <input type="text" name="total3" id="total3" -->
-<!-- 					class="totalprice" value="0" readonly="readonly" /></td> -->
-<!-- 			<tr> -->
-<!-- 		</table> -->
 		<div class="g-recaptcha" data-sitekey="6LcZNusZAAAAAGcGq6PDVePyNXf6f9GTtl-LGcMN"></div>
 		<br> <input type="submit" value="確認數量" name="submit"
 			class="btn btn-outline-info" id="submit">
@@ -220,7 +159,7 @@ td {
 				});
 				//半票
 				var count = 0;
-				$("#halfnum").val(count);
+				$("#ticketnum").val(count);
 				$("#plus").click(
 						function() {
 							if (count < 4) {
@@ -229,7 +168,7 @@ td {
 								count = 4;
 								alert("最多訂購4張");
 							}
-							$("#halfnum").val(count);
+							$("#ticketnum").val(count);
 						})
 				$("#minus").click(
 						function() {
@@ -238,38 +177,21 @@ td {
 							} else if (count = 0) {
 								count2 = 0;
 							}
-							$("#halfnum").val(count);
+							$("#ticketnum").val(count);
 							
 						})
 						
-				//全票
-				var count2 = 0;
-				$("#adultnum").val(count2);
-				$("#plus2").click(
-						function() {
-							//設定數量上限為4
-							if (count2 < 4) {
-								count2++;
-							} else if (count2 = 4 ) {
-								count2 = 4;
-								alert("最多訂購4張");
-							}
-							$("#adultnum").val(count2);
+			$("#submit").click(function(){
+	  			var selectnum = $("#ticketnum").val();
+	  			console.log("selectnum: "+selectnum)
+				if (selectnum == "0") {
+					alert("請選擇購買數量");
+        			return false;
+    		 	}
+			}); 
 
-						})
-				$("#minus2").click(
-						function() {
-							//設定數量下限0
-							if (count2 > 0) {
-								count2--;
-							} else if (count2 = 0) {
-								count2 = 0;
-							}
-							$("#adultnum").val(count2);
-							return count2;
-						})					
-
-			})
+		})
+		
 
 
 
@@ -346,5 +268,9 @@ td {
 	</script>
 
 </body>
+
+
+
+
 
 </html>

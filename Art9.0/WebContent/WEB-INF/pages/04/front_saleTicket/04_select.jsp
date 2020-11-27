@@ -104,7 +104,7 @@
 					<td>${show.startdate}~ ${show.enddate}</td>
 					<td>${show.title}</td>
 					<td>${show.site}</td>
-					<td><input type=SUBMIT value="購買" class="btn btn-outline-info"></td>
+					<td><input type=SUBMIT value="購買" class="genric-btn success-border radius"></td>
 <!-- 					這些隱藏欄位都會送到後端 -->
 <%-- 					<Input type='hidden' name='title' value='${show.title}'> --%>
 					<Input type='hidden' name='actid' value='${show.no}'>

@@ -27,13 +27,13 @@
 		<div class="container">
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a href="index.html"><img
+					<a href="<c:url value='/index.html' />""><img
 						src="<c:url value='/frontstyle/img/aaart.png'/>" alt="" title="" /></a>
 					<!-- 				        <a href="index.html"><p>得藝的一天</p></a> -->
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="#"><a href="index.html">首頁</a></li>
+						<li class="#"><a href="<c:url value='/index.html' />"">首頁</a></li>
 						<li><a href="<c:url value='/14/shopListController.ctrl' />">得意洋行</a></li>
 						<li><a href="#">找商店</a></li>
 						<li><a href="#">找藝人</a></li>

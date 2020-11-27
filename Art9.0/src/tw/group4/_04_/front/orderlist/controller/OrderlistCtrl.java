@@ -61,7 +61,16 @@ public class OrderlistCtrl {
 						map.put("TICKETCATEGORY",Orderlist.getTICKETCATEGORY() );
 						map.put("TICKET_NUM",Orderlist.getTICKET_NUM() );
 						map.put("TOTALPRICE",Orderlist.getTOTALPRICE() );
-						map.put("seats",Orderlist.getSeats() );
+												
+						String seatString =Orderlist.getSeatstring();
+						System.out.println(seatString);
+						String[] seatarray = seatString.replaceAll("\\[", "").replaceAll("\\]", "").split(",");		
+						for (String s : seatarray) {
+							
+							System.out.println(s);
+							
+						}
+						//						map.put("seats",Orderlist.getSeats() );
 ////						map.put("photo", Photoencode);
 //						// 存入map集合中
 ////						System.out.println(map);

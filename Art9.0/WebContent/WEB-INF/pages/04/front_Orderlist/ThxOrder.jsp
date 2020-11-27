@@ -27,6 +27,7 @@
 	
 <div class="container">
 <br><br><H1 class="text-center">訂單已成立</H1>
+<P class="text-center">詳細訂單資訊已傳送至${email}</P>
 <P class="text-center">訂單編號為${orderid}</P>
 </div>
 </body>

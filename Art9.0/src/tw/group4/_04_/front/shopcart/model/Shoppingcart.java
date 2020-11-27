@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -31,7 +32,11 @@ public class Shoppingcart implements Serializable {
 	private String TICKETCATEGORY;
 	private int TICKET_NUM;
 	private int TOTALPRICE;
+
+	@Transient
 	private String seats[];
+	@Column(name = "SEATS")	
+	private String seatstring;
 
 	public Shoppingcart(){
 		
@@ -131,6 +136,14 @@ public class Shoppingcart implements Serializable {
 
 	public void setSeats(String[] seats) {
 		this.seats = seats;
+	}
+
+	public String getSeatstring() {
+		return seatstring;
+	}
+
+	public void setSeatstring(String seatstring) {
+		this.seatstring = seatstring;
 	}
 	
 	
