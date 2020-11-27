@@ -44,6 +44,52 @@ public class ShoppingcartDAO {
 //		return null;
 	}
 
+	// 訂單編號生成
+	public String getOrderIdByTime() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String newDate = sdf.format(new Date());
+		String result = "";
+		Random random = new Random();
+		for (int i = 0; i < 3; i++) {
+			result += random.nextInt(10);
+		}
+		return newDate + result;
+	}
+
+	public int insert4Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		String Seat2 = seats[1];
+		String Seat3 = seats[2];
+		String Seat4 = seats[3];
+		Session session = sessionFacory.getCurrentSession();
+		Query query = session.createQuery("update SEAT st set "
+				+"st."+Seat1+"=1" 
+				+"st."+Seat2+"=1" 
+				+"st."+Seat3+"=1" 
+				+"st."+Seat4+"=1" 
+				+ "where name="+actno);
+		query.executeUpdate();		
+		return (Integer) null;
+	}
+
+	public int insert3Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		String Seat2 = seats[1];
+		String Seat3 = seats[2];
+		return (Integer) null;
+	}
+
+	public int insert2Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		String Seat2 = seats[1];
+		return (Integer) null;
+	}
+
+	public int insert1Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		return (Integer) null;
+	}
+
 //	// 查詢 //先將查詢結果放入MAP
 //	public Map<String, Integer> select(String memberid) {
 //		Session session = sessionFacory.getCurrentSession();
@@ -87,17 +133,7 @@ public class ShoppingcartDAO {
 //		return false;
 //	}
 //
-	// 訂單編號生成
-	public String getOrderIdByTime() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String newDate = sdf.format(new Date());
-		String result = "";
-		Random random = new Random();
-		for (int i = 0; i < 3; i++) {
-			result += random.nextInt(10);
-		}
-		return newDate + result;
-	}
+
 //
 //	// 查詢分類  開始日期排序
 //	public List<Shoppingcart> selectOrderlist(String memberID) {

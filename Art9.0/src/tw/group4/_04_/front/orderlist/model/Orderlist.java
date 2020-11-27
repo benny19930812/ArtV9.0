@@ -37,6 +37,7 @@ public class Orderlist implements Serializable {
 	private String seats[];
 	@Column(name = "SEATS")	
 	private String seatstring;
+	
 	public Orderlist(){
 		
 	}

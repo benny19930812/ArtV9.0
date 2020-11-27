@@ -26,6 +26,33 @@ public class ShoppingcartService {
 			return shoppingcartDAO.insert(shoppingcart);
 
 	}
+	
+	public  String getOrderIdByTime() {
+		
+		return shoppingcartDAO.getOrderIdByTime();
+	
+	}
+	
+	public int insert4Seat(String[] seats,String actno) {
+		
+		return shoppingcartDAO.insert4Seat(seats,actno);
+	}
+
+	public int insert3Seat(String[] seats,String actno) {
+
+		return shoppingcartDAO.insert3Seat(seats, actno);
+	}
+
+	public int insert2Seat(String[] seats,String actno) {
+
+		return shoppingcartDAO.insert2Seat(seats,actno);
+	}
+
+	public int insert1Seat(String[] seats,String actno) {
+		
+		return shoppingcartDAO.insert1Seat(seats,actno);
+	}
+	
 //
 //	// 查詢  //先將查詢結果放入MAP
 //		public Map<String, Integer> select(String memberid) {
@@ -47,11 +74,7 @@ public class ShoppingcartService {
 //	}
 //	
 	//訂單編號生成
-	public  String getOrderIdByTime() {
-			
-		return shoppingcartDAO.getOrderIdByTime();
 	
-	}
 //	
 //	
 //		

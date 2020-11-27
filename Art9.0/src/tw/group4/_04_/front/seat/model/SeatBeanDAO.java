@@ -43,6 +43,65 @@ public class SeatBeanDAO {
 			return SeatBean;
 	}
 	
+	public  boolean   insert4Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		String Seat2 = seats[1];
+		String Seat3 = seats[2];
+		String Seat4 = seats[3];
+		Session session = sessionFacory.getCurrentSession();
+		Query query = session.createQuery("update SeatBean st set "
+				+Seat1+"=1 ," 
+				+Seat2+"=1 ," 
+				+Seat3+"=1 ," 
+				+Seat4+"=1 " 
+				+ "where st.ACT_NO="+actno);
+		query.executeUpdate();
+			
+	return true;
+	
+	}
+
+	public boolean insert3Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		String Seat2 = seats[1];
+		String Seat3 = seats[2];
+		Session session = sessionFacory.getCurrentSession();
+		Query query = session.createQuery("update SeatBean st set "
+				+Seat1+"=1 ," 
+				+Seat2+"=1 ," 
+				+Seat3+"=1 " 
+				+ "where st.ACT_NO="+actno);
+		query.executeUpdate();
+			
+	return true;
+	}
+
+	public boolean insert2Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		String Seat2 = seats[1];
+		Session session = sessionFacory.getCurrentSession();
+		Query query = session.createQuery("update SeatBean st set "
+				+Seat1+"=1 ," 
+				+Seat2+"=1 " 
+				+ "where st.ACT_NO="+actno);
+		query.executeUpdate();
+			
+	return true;
+	}
+
+	public boolean insert1Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		Session session = sessionFacory.getCurrentSession();
+		Query query = session.createQuery("update SeatBean st set "
+				+Seat1+"=1 " 
+
+				+ "where st.ACT_NO="+actno);
+		query.executeUpdate();
+			
+	return true;
+	}
+	
+	
 //	// 新增
 //	public SeatBean insertSeat (SeatBean SeatBean) {
 //		Session session = sessionFacory.getCurrentSession();

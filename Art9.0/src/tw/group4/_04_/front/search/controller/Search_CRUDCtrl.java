@@ -417,7 +417,7 @@ public class Search_CRUDCtrl {
 		}
 		//show detail
 		@RequestMapping(path = "/04/showDetail.ctrl", method = RequestMethod.GET)
-		public String processUpdate(int actid,Model model) {
+		public String processDetail(int actid,Model model) {
 
 			System.out.println("actid="+actid);			
 			ShowBean showBean = showBeanService.select(actid);

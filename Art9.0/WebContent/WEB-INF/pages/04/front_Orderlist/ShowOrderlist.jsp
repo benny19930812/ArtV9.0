@@ -8,66 +8,68 @@
 <title>訂單</title>
 </head>
 <body>
-	<%-- <form name="order" action="<c:url value='/_04_Orderlist/OrIdSearchServlet'/>" method="get" > --%>
-		<c:set var="getorlist" value="${requestScope.getorlist}" />
-		
-		<%--使用JSTL 執行for loop ${show.no}取map內value --%>
 
-<br><h1>訂單資訊</h1>
-		<table class="table table-bordered">
-			<br><br><tr>
-				<th>訂單編號</th>
-				<th>訂購人姓名</th>
-				<th>E-mail</th>
-				<th>連絡電話</th>
-				<th>通訊地址</th>
-				<th>總金額</th>
+<!-- start banner Area -->
+			<section class="banner-area relative" id="home">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								AAART Shop
+							</h1>	
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="<c:url value='/14/shopListController.ctrl' />"> Shop</a></p>
+						</div>											
+					</div>
+				</div>
+			</section>
+	<!-- End banner Area -->
 
+	<table class="table table-bordered">
+			<tr>
+				<th class=""></th>
+				<th class="">訂單編號</th>
+				<th class="">節目名稱</th>
+				<th class="">票券種類</th>
+				<th class="">訂購數量</th>
+				<th class="">總金額</th>
+				<th class="">付款狀況</th>
+				<th class="">操作</th>
 			</tr>
-			<c:forEach items="${list}" var="show" varStatus="idx">
+
+			<%--使用JSTL 執行for loop ${show.no}取map內value --%>
+			<c:forEach items="${requestScope.list}" var="orderlist" varStatus="idx">
 				<tr>
-					<td>${show.orderid}</td>
-					<td>${show.name}</td>
-					<td>${show.email}</td>
-					<td>${show.tel}</td>
-					<td>${show.address}</td>
-					<td>${show.totalprice}</td>
-				</tr>
+					<form name="order" action="<c:url value=''/> " method="get"> 
+<!-- 					傳送訂單資訊 -->					
+						<td><input type=SUBMIT value="訂單詳細" class="genric-btn success-border radius"></td>
+						<Input type='hidden' name='orderid' value='${orderlist.ORDERID}'>
+			 	  	</form> 
+			 	  	
+					<td>${orderlist.ORDERID}</td>
+					<td>${orderlist.TITLE}</td>
+					<td>${orderlist.TICKETCATEGORY}</td>
+					<td>${orderlist.TICKET_NUM}</td>
+					<td>${orderlist.TOTALPRICE}</td>
+					<td></td>
+					<td>
+						<form name="order" action="<c:url value=''/> " method="get"> 
+						<input type="submit" value="取消訂單" name="submit" class="genric-btn success-border radius" id="delete" onclick="return del()" >
+			 	  		</form> 
+					</td>
+
+			
+			
+					</tr>
 
 			</c:forEach>
-			</table><br><br>
-		<table class="table table-bordered">
-			<tr>
-            <td>節目名稱</td>
-            <td>票種</td>
-            <td>數量</td>
-            <td>單價</td>
-         
-<c:forEach items="${getorlist2}" var="show2" varStatus="idx">
-        </tr>
-			<tr>
-            <td>${show2.title}</td>
-            <td>全票</td>
-            <td>${show2.adultnum}</td>  
-          	<td name="price" class="price" id="price" >1000</td>
 
-            <tr>
-            <tr>
-            <td>${show2.title}</td>
-            <td>半票</td>
-            <td>${show2.halfnum}</td>  
-          	<td name="price" class="price" id="price" >500</td>
-
- 			
-         <tr>
-	</c:forEach>		
-			
 
 		</table>
 	</form>	
-	 <input type="submit" value="修改訂單" name="submit" class="btn btn-outline-info" id="update"  >
+<!-- 	 <input type="submit" value="修改訂單" name="submit" class="btn btn-outline-info" id="update"  > -->
 	 
-	  <input type="submit" value="刪除訂單" name="submit" class="btn btn-outline-info" id="delete"  >
+<!-- 	  <input type="submit" value="刪除訂單" name="submit" class="btn btn-outline-info" id="delete"  > -->
 <%-- 	 <form name="order" action="<c:url value='/_04_Orderlist/OrIdDeleteServlet'/> " method="get"> --%>
 <!-- 	  </form> -->
  <script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -84,18 +86,27 @@
     
     
 
-    $("#delete").click(function () {
-    	if (confirm("確認刪除? ")) {
-    		window.location ="<c:url value='/_04_Orderlist/OrIdDeleteServlet'/>" 
-    	} else {
-    		return false;
-    	}
+//     $("#delete").click(function () {
+//     	if (confirm("確認刪除? ")) {
+//     		window.location ="<c:url value='/_04_Orderlist/OrIdDeleteServlet'/>" 
+//     	} else {
+//     		return false;
+//     	}
     	
-    })
-    
+//     })
     
 
     </script>	  
+    	<script>
+		function del() {
+			var msg = "是否取消?";
+			if (confirm(msg) == true) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
 	  
 	  
 </body>

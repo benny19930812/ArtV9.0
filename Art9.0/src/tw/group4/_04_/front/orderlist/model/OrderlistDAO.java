@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import tw.group4._04_.back.model.ShowBean;
 import tw.group4._04_.back.model.ShowBean2;
+import tw.group4._04_.front.seat.model.SeatBean;
 
 @Repository("OrderlistDAO")
 public class OrderlistDAO {
@@ -31,6 +33,12 @@ public class OrderlistDAO {
 	@Autowired
 	public OrderlistDAO(@Qualifier("sessionFactory") SessionFactory sessionFacory) {
 		this.sessionFacory = sessionFacory;
+	}
+	
+	// 查詢單筆
+	public Orderlist searchBean(String orderid) {
+		Session session = sessionFacory.getCurrentSession();
+		return session.get(Orderlist.class, orderid);
 	}
 
 	// 新增

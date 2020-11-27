@@ -108,11 +108,7 @@
 <!-- 					這些隱藏欄位都會送到後端 -->
 <%-- 					<Input type='hidden' name='title' value='${show.title}'> --%>
 					<Input type='hidden' name='actid' value='${show.no}'>
-<%-- 					<Input type='hidden' name='site' value='${show.site}'> --%>
-<%-- 					<Input type='hidden' name='startdate' value='${show.startdate}'> --%>
-<%-- 					<Input type='hidden' name='enddate' value='${show.enddate}'> --%>
-<%-- 					<Input type='hidden' name='description' value='${show.description}'> --%>
-<%-- 					<Input type='hidden' name='photo' value='${show.photo}'> --%>
+
 
 					</form>
 					</tr>

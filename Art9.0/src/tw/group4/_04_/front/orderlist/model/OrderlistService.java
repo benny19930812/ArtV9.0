@@ -23,6 +23,11 @@ public class OrderlistService {
 		this.orderlistDAO = orderlistDAO;
 	}
 	
+	public Orderlist searchBean(String orderid) {
+		return orderlistDAO.searchBean(orderid);
+	}
+	
+	
 	public List<Orderlist> searchOrderlist(String memberID) {
 		
 		return orderlistDAO.searchOrderlist(memberID);

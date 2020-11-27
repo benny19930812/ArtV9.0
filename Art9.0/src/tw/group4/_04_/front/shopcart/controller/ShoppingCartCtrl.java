@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.Spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,12 +15,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import tw.group4._04_.front.javaMail.controller.SpringMail;
 import tw.group4._04_.front.seat.model.SeatBean;
 import tw.group4._04_.front.seat.model.SeatBeanService;
 import tw.group4._04_.front.shopcart.model.Shoppingcart;
 import tw.group4._04_.front.shopcart.model.ShoppingcartService;
 import tw.group4._35_.login.model.WebsiteMember;
 import tw.group4.util.IdentityFilter;
+
 
 @Controller
 public class ShoppingCartCtrl {
@@ -32,7 +35,7 @@ public class ShoppingCartCtrl {
 	private Shoppingcart shoppingcart;
 	@Autowired
 	private ShoppingcartService shoppingcartService;
-
+	//判定是否登入
 	@RequestMapping(path = "/04/booking.ctrl", method = RequestMethod.GET)
 	public String booking(Model model, HttpSession session, HttpServletRequest Request) {
 
@@ -55,7 +58,7 @@ public class ShoppingCartCtrl {
 		}
 
 	}
-
+	//取得劃位資訊
 	@RequestMapping(path = "/04/shoppingcart.ctrl", method = RequestMethod.GET)
 	public String shoppingcart(Model model, HttpSession session, HttpServletRequest Request) {
 		List<String> seat = new ArrayList<String>();
@@ -67,13 +70,13 @@ public class ShoppingCartCtrl {
 
 		return IdentityFilter.loginID + "04/front_saleTicket/Booking2";
 	}
-
+	
 	@RequestMapping(path = "/04/shoppingcart2.ctrl", method = RequestMethod.GET)
 	public String shoppingcart2(Model model, HttpSession session, HttpServletRequest Request) {
 
 		shoppingcart = (Shoppingcart) session.getAttribute("shoppingcart");
 		if (shoppingcart == null) {
-			return "redirect:/04/index";
+			return "redirect:/index.html";
 		}
 		String ticketcategory = shoppingcart.getTICKETCATEGORY();
 		System.out.println(ticketcategory);
@@ -132,11 +135,26 @@ public class ShoppingCartCtrl {
 	public String SaveCart(Model model, HttpSession session, HttpServletRequest Request) {
 
 		shoppingcart = (Shoppingcart) session.getAttribute("shoppingcart");
-		String orderlistID = shoppingcartService.getOrderIdByTime();
+		String orderlistID = shoppingcartService.getOrderIdByTime();		
 		String[] seats = shoppingcart.getSeats();
-		for (String s : seats) {
-			System.out.println(s);
+		String actno =Integer.toString(shoppingcart.getACT_ID());
+		int ticketnum=shoppingcart.getTICKET_NUM();
+		System.out.println(ticketnum);
+		switch (ticketnum) {
+		case 1:
+			seatBeanService.insert1Seat(seats,actno);
+			break;
+		case 2:
+			seatBeanService.insert2Seat(seats,actno);
+			break;
+		case 3:
+			seatBeanService.insert3Seat(seats,actno);
+			break;
+		default:
+			seatBeanService.insert4Seat(seats,actno);
+			break;
 		}
+		//將Arry轉為String存入DB
 		String seatsString = Arrays.toString(seats);
 		System.out.println("seatsString" + seatsString);
 		shoppingcart.setSeatstring(seatsString);
@@ -145,8 +163,23 @@ public class ShoppingCartCtrl {
 		shoppingcartService.insert(shoppingcart);
 		System.out.println("訂單已成立");
 		model.addAttribute("orderlistID", orderlistID);
+		model.addAttribute("email", shoppingcart.getEMAIL());
+//		SpringMail.processmailsend(shoppingcart);
+		//清空購物車
+		session.removeAttribute("shoppingcart");
 
 		return IdentityFilter.loginID + "04/front_Orderlist/ThxOrder";
+	}
+	
+	@RequestMapping(path = "/04/goshoppingcart.ctrl", method = RequestMethod.GET)
+	public String goshoppingcart(Model model, HttpSession session, HttpServletRequest Request) {
+		
+		WebsiteMember member = (WebsiteMember) session.getAttribute("member");
+		if (member == null) {
+			return "redirect:/35/loginEntry";
+		} else {	
+			return IdentityFilter.loginID + "04/front_saleTicket/Booking2";
+		}
 	}
 
 }

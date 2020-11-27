@@ -7,7 +7,6 @@
 <title>訂單成立</title>
 </head>
 <body>
-<c:set var="orderid" value="${param.orderid}" scope=""/>
 
 <!-- start banner Area -->
 			<section class="banner-area relative" id="home">	
@@ -27,8 +26,8 @@
 	
 <div class="container">
 <br><br><H1 class="text-center">訂單已成立</H1>
-<P class="text-center">詳細訂單資訊已傳送至${email}</P>
-<P class="text-center">訂單編號為${orderid}</P>
+<P class="text-center">詳細訂單資訊已傳送至${requestScope.email}</P>
+<P class="text-center">訂單編號為${requestScope.orderlistID}</P>
 </div>
 </body>
 </html>
