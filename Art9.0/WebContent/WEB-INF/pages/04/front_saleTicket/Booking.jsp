@@ -40,6 +40,7 @@ td {
 .price2 {
 	width: 200px;
 }
+
 </style>
 
 </head>
@@ -62,6 +63,9 @@ td {
 			</section>
 	<!-- End banner Area -->
 
+ 
+
+
 <div class="container">
 
 	<br><br><table>
@@ -70,6 +74,7 @@ td {
 		<td class="progressbar">Step 2</td>
 		<td class="progressbar">Step 3</td>
 		<td class="progressbar">Step 4</td>
+		
 	</tr>
 	<tr>
 	<td  colspan="4" style="width: 50%">
@@ -86,6 +91,7 @@ td {
 		<td>劃位</td>
 		<td>購票確認</td>
 		<td>完成訂購</td>
+		
 	</tr>
 	</table><br>
 

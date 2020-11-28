@@ -36,14 +36,14 @@ public class SpringMail {
 	}
 	
 	@RequestMapping(path = "/04/mailsendAttituate.ctrl", method = RequestMethod.GET)
-	public String processmailsendAttituate(String category, String page, Model model) throws MessagingException {
+	public String processmailsendsimp(Shoppingcart shoppingcart) throws MessagingException {
 		
-		String to = "benny199312@gmail.com";
-		String subject = "SpringMAIL";
-		String text = "TEST!!TEST!!";
-		String pathToAttachment = "C:\\Users\\Student\\source\\Downloads\\p5.jpg";
-		
-		emailServiceImpl.sendMessageWithAttachment(to, subject, text, pathToAttachment);
+		//寄訂單詳細mail
+		String to =  shoppingcart.getEMAIL();
+		String subject = "訂單編號"+shoppingcart.getORDERID()+"詳細";
+		String text = "親愛的"+shoppingcart.getNAME()+"你好";
+		String pathToAttachment = "QRcodeOutput/QRCode.png";	
+		emailServiceImpl.sendSimpleMessage(to, subject, text);
 		System.out.println("mail已寄送");
 			return "AAA";
 	}

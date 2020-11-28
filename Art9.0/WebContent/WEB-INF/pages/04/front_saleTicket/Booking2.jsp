@@ -38,6 +38,9 @@
         #1{
         float:right;
         }
+        form{ 
+        display:inline; 
+                 } 
        
 
     </style>
@@ -99,33 +102,32 @@
  <table class= "table table-bordered">
  
 
-        
         <tr>
             <td>訂購人姓名 
             </td>
             <td>
-             <input type="text" name="name" value="">
-             <td>
+             <input type="text" name="name" value="" required="required">
+             </td>
         </tr>
         <tr>
-            <td>電子郵件
+           <td>電子郵件
             </td>
             <td>
-             <input type="text" name="email" value="">
+             <input type="text" name="email" value="" required="required">
              </td>
         </tr>
         <tr>
             <td>電話
             </td>
             <td>
-             <input type="text" name="tel">
+             <input type="text" name="tel" required="required">
             </td>
         </tr>
         <tr>
             <td>地址
             </td>
             <td>
-             <input type="text" name="add">
+             <input type="text" name="add" required="required">
             </td>
         </tr>
      </table><br><br> <br>  
@@ -159,11 +161,12 @@
 			
 		</table>	
  </form>	
+          <input type="submit" value="全部清除" name="clear" class="btn btn-outline-info" id="clear" > 
           <input type="submit" value="繼續購票" name="1" class="btn btn-outline-info" id="1" form="order">  
     	
-   		<form name="order" action="<c:url value='/04/delectCart.ctrl'/>" method="GET">
-          <br><input type="submit" value="全部清除" name="clear" class="btn btn-outline-info" id="clear" onclick="return del()"> 
-    	 </form>
+<%--    		<form name="order" action="<c:url value='/04/delectCart.ctrl'/>" method="GET"> --%>
+<!--           <br><input type="submit" value="全部清除" name="clear" class="btn btn-outline-info" id="clear" onclick="return del()">  -->
+<!--     	 </form> -->
 
 
 </div>   
@@ -182,14 +185,23 @@ $(document).ready(
 				});
 
 
-			function del() {
-				var msg = "是否刪除?";
-				if (confirm(msg) == true) {
-				return true;
-				} else {
-				return false;
-				}
-			}
+// 			function del() {
+// 				var msg = "是否刪除?";
+// 				if (confirm(msg) == true) {
+// 				return true;
+// 				} else {
+// 				return false;
+// 				}
+// 			}
+			
+			 $("#clear").click(function () {
+			    	if (confirm("是否清除購物車? ")) {
+			    		window.location ="<c:url value='/04/delectCart.ctrl'/>" 
+			    	} else {
+			    		return false;
+			    	}
+			    	
+			    })
 
 
 </script>

@@ -109,5 +109,15 @@ public class OrderlistDAO {
 		List<Orderlist> list = query.list();
 		return list;
 	}
+	
+	// 查詢會員訂單
+		public List<Orderlist> searchOrderid(String orderid) {
+			// "From ShowBean"為createQuery
+			//
+			Session session = sessionFacory.getCurrentSession();
+			Query<Orderlist> query = session.createQuery("From Orderlist Odr where Odr.ORDERID ="+orderid,Orderlist.class);
+			List<Orderlist> list = query.list();
+			return list;
+		}
 
 }

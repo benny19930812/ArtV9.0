@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.Spring;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import tw.group4._04_.front.javaMail.controller.SpringMail;
+import tw.group4._04_.front.javaMail.model.EmailServiceImpl;
 import tw.group4._04_.front.seat.model.SeatBean;
 import tw.group4._04_.front.seat.model.SeatBeanService;
 import tw.group4._04_.front.shopcart.model.Shoppingcart;
@@ -35,6 +37,8 @@ public class ShoppingCartCtrl {
 	private Shoppingcart shoppingcart;
 	@Autowired
 	private ShoppingcartService shoppingcartService;
+	@Autowired
+	private EmailServiceImpl emailServiceImpl;
 	//判定是否登入
 	@RequestMapping(path = "/04/booking.ctrl", method = RequestMethod.GET)
 	public String booking(Model model, HttpSession session, HttpServletRequest Request) {
@@ -70,7 +74,7 @@ public class ShoppingCartCtrl {
 
 		return IdentityFilter.loginID + "04/front_saleTicket/Booking2";
 	}
-	
+    //取得訂購人資訊
 	@RequestMapping(path = "/04/shoppingcart2.ctrl", method = RequestMethod.GET)
 	public String shoppingcart2(Model model, HttpSession session, HttpServletRequest Request) {
 
@@ -98,7 +102,7 @@ public class ShoppingCartCtrl {
 
 	@RequestMapping(path = "/04/delectTicket.ctrl", method = RequestMethod.GET)
 	public String Ticket(Model model, HttpSession session, HttpServletRequest Request, String seat) {
-		System.out.println("seat" + seat);
+//		System.out.println("seat" + seat);
 		String[] seats2 = {};
 		List<String> seatlist = new ArrayList<String>();
 		// 取得SESSION 中seats
@@ -106,7 +110,7 @@ public class ShoppingCartCtrl {
 		String[] seats = shoppingcart.getSeats();
 		for (String s : seats) {
 			if (!s.equals(seat)) {
-				System.out.println(s);
+//				System.out.println(s);
 				seatlist.add(s);
 			}
 		}
@@ -132,14 +136,14 @@ public class ShoppingCartCtrl {
 
 	// 儲存訂單
 	@RequestMapping(path = "/04/SaveCart.ctrl", method = RequestMethod.GET)
-	public String SaveCart(Model model, HttpSession session, HttpServletRequest Request) {
+	public String SaveCart(Model model, HttpSession session, HttpServletRequest Request) throws MessagingException {
 
 		shoppingcart = (Shoppingcart) session.getAttribute("shoppingcart");
 		String orderlistID = shoppingcartService.getOrderIdByTime();		
 		String[] seats = shoppingcart.getSeats();
 		String actno =Integer.toString(shoppingcart.getACT_ID());
 		int ticketnum=shoppingcart.getTICKET_NUM();
-		System.out.println(ticketnum);
+//		System.out.println(ticketnum);
 		switch (ticketnum) {
 		case 1:
 			seatBeanService.insert1Seat(seats,actno);
@@ -158,13 +162,17 @@ public class ShoppingCartCtrl {
 		String seatsString = Arrays.toString(seats);
 		System.out.println("seatsString" + seatsString);
 		shoppingcart.setSeatstring(seatsString);
-
+		//orderid存入shoppingcart
 		shoppingcart.setORDERID(orderlistID);
 		shoppingcartService.insert(shoppingcart);
 		System.out.println("訂單已成立");
+		
+		//寄訂單詳細mail
+		emailServiceImpl.processmailsendAttituate(shoppingcart);
+			
 		model.addAttribute("orderlistID", orderlistID);
 		model.addAttribute("email", shoppingcart.getEMAIL());
-//		SpringMail.processmailsend(shoppingcart);
+
 		//清空購物車
 		session.removeAttribute("shoppingcart");
 

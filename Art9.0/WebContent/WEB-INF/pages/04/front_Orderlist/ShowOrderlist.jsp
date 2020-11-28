@@ -24,7 +24,7 @@
 				</div>
 			</section>
 	<!-- End banner Area -->
-
+ <br><br><H1>所有訂單</H1>
 	<table class="table table-bordered">
 			<tr>
 				<th class=""></th>
@@ -40,7 +40,7 @@
 			<%--使用JSTL 執行for loop ${show.no}取map內value --%>
 			<c:forEach items="${requestScope.list}" var="orderlist" varStatus="idx">
 				<tr>
-					<form name="order" action="<c:url value=''/> " method="get"> 
+					<form name="order" action="<c:url value='/04/OrderlistDetail.ctrl'/> " method="get"> 
 <!-- 					傳送訂單資訊 -->					
 						<td><input type=SUBMIT value="訂單詳細" class="genric-btn success-border radius"></td>
 						<Input type='hidden' name='orderid' value='${orderlist.ORDERID}'>

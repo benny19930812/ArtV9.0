@@ -35,7 +35,7 @@ public class OrderlistCtrl {
 	@Autowired
 	private SeatBeanService seatBeanService;
 	@Autowired
-	private Orderlist Orderlist;
+	private Orderlist orderlist;
 	@Autowired
 	private OrderlistService orderlistService;
 
@@ -85,30 +85,22 @@ public class OrderlistCtrl {
 		
 	}
 	//show detail
-//	@RequestMapping(path = "/04/OrderlistDetail.ctrl", method = RequestMethod.GET)
-//	public String processOrderDetail(int actid,Model model) {
-//		
-//		System.out.println("actid="+actid);			
-//		ShowBean showBean = showBeanService.select(actid);
-//		
-//		String title = showBean.getACT_TITLE();
-//		String locationName = showBean.getACT_LOCATION_NAME();
-//		String description = showBean.getACT_DESCRIPTION();
-//		String startdate = showBean.getACT_STARTDATE();
-//		String enddate = showBean.getACT_ENDDATE();
-//		byte[] photo =showBean.getACT_PHOTO();
-////		圖片byteArray透過Base64轉字串，輸出到html
-//		String Photoencode = Base64.encodeBase64String(photo);
-//		
-//		model.addAttribute("actid", actid);
-//		model.addAttribute("title", title);
-//		model.addAttribute("site", locationName);
-//		model.addAttribute("startdate", startdate);
-//		model.addAttribute("enddate", enddate);
-//		model.addAttribute("description", description);
-//		model.addAttribute("photo", Photoencode);
-//		
-//		return IdentityFilter.loginID+"04/front_saleTicket/showDetail";
-//	}
+	@RequestMapping(path = "/04/OrderlistDetail.ctrl", method = RequestMethod.GET)
+	public String processOrderDetail(String orderid,Model model) {
+		System.out.println("orderid="+orderid);		
+		List<Orderlist> orderlists = orderlistService.searchOrderid(orderid);
+		orderlist = orderlists.get(0);
+		
+		String seatString = orderlist.getSeatstring();
+		System.out.println(seatString);
+		String[] seatarray = seatString.replaceAll("\\[", "").replaceAll("\\]", "").split(",");
+		for (String s : seatarray) {
+			System.out.println(s);
+		}
+		orderlist.setSeats(seatarray);
+		model.addAttribute("orderlist",orderlist);
+		
+		return IdentityFilter.loginID+"04/front_Orderlist/OrderlistDetail";
+	}
 
 }

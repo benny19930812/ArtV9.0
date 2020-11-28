@@ -80,7 +80,7 @@
 	</table><br>
 	
 	
-	<h1 id=ticketnum>${sessionScope.shoppingcart.TICKET_NUM}</h1>
+	<p id="ticketnum" style="display:none">${sessionScope.shoppingcart.TICKET_NUM}</p>
 	<h1>座位表</h1>
 	<h2>請勾選位置</h2>
 	<p>請在灰色空位上點選您要的位置</p>

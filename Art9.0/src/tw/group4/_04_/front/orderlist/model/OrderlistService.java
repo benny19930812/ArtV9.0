@@ -32,5 +32,11 @@ public class OrderlistService {
 		
 		return orderlistDAO.searchOrderlist(memberID);
 	}
+	
+	public List<Orderlist> searchOrderid(String orderid) {
+		
+		return orderlistDAO.searchOrderid(orderid);
+	}
+
 
 }

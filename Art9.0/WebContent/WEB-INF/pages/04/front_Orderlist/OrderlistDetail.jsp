@@ -8,13 +8,25 @@
 <title>訂單</title>
 </head>
 <body>
-	<%-- <form name="order" action="<c:url value='/_04_Orderlist/OrIdSearchServlet'/>" method="get" > --%>
-<%-- 		<c:set var="getorlist" value="${requestScope.getorlist}" /> --%>
-		
-		<%--使用JSTL 執行for loop ${show.no}取map內value --%>
+
+<!-- start banner Area -->
+			<section class="banner-area relative" id="home">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								AAART Shop
+							</h1>	
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="<c:url value='/14/shopListController.ctrl' />"> Shop</a></p>
+						</div>											
+					</div>
+				</div>
+			</section>
+	<!-- End banner Area -->
 
 
- <H1>確認訂單資訊</H1>
+ <br><br><H1>訂購人資訊</H1>
     <table class= "table table-bordered">
         <tr>
             <td>訂購人姓名
@@ -45,7 +57,7 @@
         </tr>
      </table><br><br> <br>  
      
-	<H2>訂購票券</H2>
+	<H2>票券資訊</H2>
 		<table class="table table-bordered">
 		<tr> 
 				<td>節目名稱</td>
@@ -137,9 +149,21 @@
  <script src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </script>    
-    
-    
-    <script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous">
+</script>
+
+<script>
+$(document).ready(		
+			function() {
+					console.log($(".ticketcategry").text());
+					if($(".ticketcategry").text()== "全票"){
+					$(".price").text("NT$2000")
+					}else{
+					$(".price").text("NT$1000")
+					}					 
+				});
+
     $("#update").click(function () {
     	
     		window.location ="<c:url value='/_04_Orderlist/OrderlistUpdate.jsp'/>" 
