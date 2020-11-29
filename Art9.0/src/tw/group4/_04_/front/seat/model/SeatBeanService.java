@@ -37,7 +37,7 @@ public class SeatBeanService {
 	public boolean delete(int actno) {;
 		return  seatBeanDAO.delete(actno);
 	}
-	
+	//插入座位
 	public Boolean insert4Seat(String[] seats,String actno) {
 		
 		return seatBeanDAO.insert4Seat(seats,actno);
@@ -56,6 +56,26 @@ public class SeatBeanService {
 	public Boolean insert1Seat(String[] seats,String actno) {
 		
 		return seatBeanDAO.insert1Seat(seats,actno);
+	}
+	//刪除座位
+	public Boolean delete4Seat(String[] seats,String actno) {
+		
+		return seatBeanDAO.delete4Seat(seats,actno);
+	}
+
+	public Boolean delete3Seat(String[] seats,String actno) {
+
+		return seatBeanDAO.delete3Seat(seats, actno);
+	}
+
+	public Boolean delete2Seat(String[] seats,String actno) {
+
+		return seatBeanDAO.delete2Seat(seats,actno);
+	}
+
+	public Boolean delete1Seat(String[] seats,String actno) {
+		
+		return seatBeanDAO.delete1Seat(seats,actno);
 	}
 
 }

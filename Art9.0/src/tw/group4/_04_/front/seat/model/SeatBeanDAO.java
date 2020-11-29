@@ -94,7 +94,63 @@ public class SeatBeanDAO {
 		Session session = sessionFacory.getCurrentSession();
 		Query query = session.createQuery("update SeatBean st set "
 				+Seat1+"=1 " 
+				+ "where st.ACT_NO="+actno);
+		query.executeUpdate();
+			
+	return true;
+	}
+	
+	public  boolean   delete4Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		String Seat2 = seats[1];
+		String Seat3 = seats[2];
+		String Seat4 = seats[3];
+		Session session = sessionFacory.getCurrentSession();
+		Query query = session.createQuery("update SeatBean st set "
+				+Seat1+"='' ," 
+				+Seat2+"='' ," 
+				+Seat3+"='' ," 
+				+Seat4+"='' " 
+				+ "where st.ACT_NO="+actno);
+		query.executeUpdate();
+			
+	return true;
+	
+	}
 
+	public boolean delete3Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		String Seat2 = seats[1];
+		String Seat3 = seats[2];
+		Session session = sessionFacory.getCurrentSession();
+		Query query = session.createQuery("update SeatBean st set "
+				+Seat1+"='' ," 
+				+Seat2+"='' ," 
+				+Seat3+"='' " 
+				+ "where st.ACT_NO="+actno);
+		query.executeUpdate();
+			
+	return true;
+	}
+
+	public boolean delete2Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		String Seat2 = seats[1];
+		Session session = sessionFacory.getCurrentSession();
+		Query query = session.createQuery("update SeatBean st set "
+				+Seat1+"='' ," 
+				+Seat2+"='' " 
+				+ "where st.ACT_NO="+actno);
+		query.executeUpdate();
+			
+	return true;
+	}
+
+	public boolean delete1Seat(String[] seats,String actno) {
+		String Seat1 = seats[0];
+		Session session = sessionFacory.getCurrentSession();
+		Query query = session.createQuery("update SeatBean st set "
+				+Seat1+"='' " 
 				+ "where st.ACT_NO="+actno);
 		query.executeUpdate();
 			

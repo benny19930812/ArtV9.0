@@ -102,5 +102,42 @@ public class OrderlistCtrl {
 		
 		return IdentityFilter.loginID+"04/front_Orderlist/OrderlistDetail";
 	}
+	//刪除訂單
+	@RequestMapping(path = "/04/DeleteOrderlist.ctrl", method = RequestMethod.GET)
+	public String processDeleteOrderlist(String orderid,Model model,HttpSession session,HttpServletRequest request) {
+		//直接由orderid取得orderlists
+		List<Orderlist> orderlists = orderlistService.searchOrderid(orderid);
+		orderlist = orderlists.get(0);		
+		String seatString = orderlist.getSeatstring();
+		System.out.println(seatString);
+		String[] seatsArray = seatString.replaceAll("\\[", "").replaceAll("\\]", "").split(",");		
+		int ticketnum =orderlist.getTICKET_NUM();
+		String actno =Integer.toString(orderlist.getACT_ID());
+		//取得memberID
+		WebsiteMember member = (WebsiteMember) session.getAttribute("member");
+		String memberID = Integer.toString(member.getId());
+		System.out.println(orderid);
+		orderlistService.deleteOrderid(orderid);
+		
+		System.out.println(ticketnum);
+		switch (ticketnum) {
+		case 1:
+			seatBeanService.delete1Seat(seatsArray,actno);
+			break;
+		case 2:
+			seatBeanService.delete2Seat(seatsArray,actno);
+			break;
+		case 3:
+			seatBeanService.delete3Seat(seatsArray,actno);
+			break;
+		default:
+			seatBeanService.delete4Seat(seatsArray,actno);
+			break;
+		}
+		return "redirect:/04/SearchOrder.ctrl?memberID="+memberID;
+
+	}
+	
+	
 
 }

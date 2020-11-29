@@ -85,7 +85,9 @@
 			</tr>
 			
 		</table>	
-
+		<form name="order" action="<c:url value='/04/DeleteOrderlist.ctrl'/> " method="get"> 						
+			 <button type="submit" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="genric-btn success-border radius" onclick="return del()">取消訂單</button>
+		</form> 
 
 
 
@@ -140,10 +142,7 @@
 			
 
 <!-- 		</table> -->
-	</form>	
-	 <input type="submit" value="修改訂單" name="submit" class="btn btn-outline-info" id="update"  >
-	 
-	  <input type="submit" value="刪除訂單" name="submit" class="btn btn-outline-info" id="delete"  >
+
 <%-- 	 <form name="order" action="<c:url value='/_04_Orderlist/OrIdDeleteServlet'/> " method="get"> --%>
 <!-- 	  </form> -->
  <script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -170,20 +169,20 @@ $(document).ready(
     	
     })
     
+
+    function del() {
+		var msg = "是否取消訂單";
+		if (confirm(msg) == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+    
     
 
-    $("#delete").click(function () {
-    	if (confirm("確認刪除? ")) {
-    		window.location ="<c:url value='/_04_Orderlist/OrIdDeleteServlet'/>" 
-    	} else {
-    		return false;
-    	}
-    	
-    })
-    
-    
-
-    </script>	  
+ </script>	  
 	  
 	  
 </body>

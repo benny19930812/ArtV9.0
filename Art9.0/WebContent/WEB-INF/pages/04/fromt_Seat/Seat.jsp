@@ -184,7 +184,7 @@
 		</tr>
 	</table>
 	
-	<br><br><input type="submit" id="submit" class="btn btn-outline-info" value="下一步" onclick="checknum()">
+	<br><br><input type="submit" id="submit" class="genric-btn primary-border radius" value="下一步" onclick="checknum()">
 	</form>
 </div>	
 	

@@ -146,8 +146,8 @@
 		</table>	
      
     </form>
-          <input type="button" value="修改訂單" name="" class="btn btn-outline-info" id="" onclick="history.back()">  
-          <input type="submit" value="送出訂單" name="1" class="btn btn-outline-info" id="1">  
+          <input type="button" value="修改訂單" name="" class="genric-btn primary-border radius" id="" onclick="history.back()">  
+          <input type="submit" value="送出訂單" name="1" class="genric-btn primary-border radius" id="1">  
 </div>
     
 <script src="https://code.jquery.com/jquery-3.5.1.js"

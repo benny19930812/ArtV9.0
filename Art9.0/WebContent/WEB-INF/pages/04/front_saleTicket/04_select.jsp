@@ -112,27 +112,6 @@
 
 					</form>
 					</tr>
-					
-					<%-- <tr>
-					傳送訂單資訊
-					<form:form method="GET" action="/04/Booking1"  modelAttribute="showitem">
-					<td><form:label path="date">${show.startdate}~ ${show.enddate}</form:label></td>
-										<td>${show.date}</td>
-					<td><form:label path="ACT_TITLE">${show.title}</form:label></td>
-					<td>${show.title}</td>
-					<td><form:label path="ACT_LOCATION_NAME">${show.title}</form:label></td>
-					<td>${show.site}</td>
-					<td><input type=SUBMIT value="購買" class="btn btn-outline-info"></td>
-					這些隱藏欄位都會送到後端
-					<Input type='hidden' name='title' value='${show.title}'>
-					<Input type='hidden' name='actid' value='${show.no}'>
-					<Input type='hidden' name='description' value='${show.description}'>
-
-					</form:form>
-					
-					</tr> --%>
-					
-					
 
 			</c:forEach>
 
@@ -146,24 +125,22 @@
 			aria-label="Toolbar with button groups">
 			<div class="btn-group mr-2" role="group" aria-label="First group">
 				<ul class="page">
-					<button type="button" class="btn btn-secondary"
+					<button type="button" class="genric-btn info"
 						onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=1&searchString=${searchString}&category=${category}&searchsite=${searchsite}&startdate=${startdate}&enddate=${enddate}"/>'">首頁</button>
 
-					<button type="button" class="btn btn-secondary"
+					<button type="button" class="genric-btn info"
 						onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=${page-1>1?page-1:1}&searchString=${searchString}&category=${category}&searchsite=${searchsite}&startdate=${startdate}&enddate=${enddate}"/>'">&laquo;</button>
 
 					<c:forEach begin="1" end="${totalPages}" varStatus="loop">
 						<c:set var="active" value="${loop.index==page?'active':''}" />
-						<button type="button" class="btn btn-secondary"
+						<button type="button" class="genric-btn info"
 							onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=${loop.index}&searchString=${searchString}&category=${category}&searchsite=${searchsite}&startdate=${startdate}&enddate=${enddate}"/>'">${loop.index}</button>
 					</c:forEach>
-					<button type="button" class="btn btn-secondary"
+					<button type="button" class="genric-btn info"
 						onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=${page-1>1?page-1:1}&searchString=${searchString}&category=${category}&searchsite=${searchsite}&startdate=${startdate}&enddate=${enddate}"/>'">&raquo;</button>
-					<button type="button" class="btn btn-secondary"
+					<button type="button" class="genric-btn info"
 						onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=${totalPages}&searchString=${searchString}&category=${category}&searchsite=${searchsite}&startdate=${startdate}&enddate=${enddate}"/>'">最後頁</button>
 			</div>
-
-
 
 
 		</div>

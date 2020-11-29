@@ -53,9 +53,9 @@
 					<td>${orderlist.TOTALPRICE}</td>
 					<td></td>
 					<td>
-						<form name="order" action="<c:url value=''/> " method="get"> 
-						<input type="submit" value="取消訂單" name="submit" class="genric-btn success-border radius" id="delete" onclick="return del()" >
-			 	  		</form> 
+						<form name="order" action="<c:url value='/04/DeleteOrderlist.ctrl'/> " method="get"> 						
+						<button type="submit" name="orderid"  value="${orderlist.ORDERID}" class="genric-btn success-border radius" onclick="return del()">取消訂單</button>
+						</form> 
 					</td>
 
 			

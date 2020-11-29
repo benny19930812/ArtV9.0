@@ -106,28 +106,28 @@
             <td>訂購人姓名 
             </td>
             <td>
-             <input type="text" name="name" value="" required="required">
+             <input type="text" name="name" value="${sessionScope.shoppingcart.NAME}" required="required">
              </td>
         </tr>
         <tr>
            <td>電子郵件
             </td>
             <td>
-             <input type="text" name="email" value="" required="required">
+             <input type="text" name="email" value="${sessionScope.shoppingcart.EMAIL}" required="required">
              </td>
         </tr>
         <tr>
             <td>電話
             </td>
             <td>
-             <input type="text" name="tel" required="required">
+             <input type="text" name="tel" value="${sessionScope.shoppingcart.TEL}" required="required">
             </td>
         </tr>
         <tr>
             <td>地址
             </td>
             <td>
-             <input type="text" name="add" required="required">
+             <input type="text" name="add" value="${sessionScope.shoppingcart.ADDRESS}" required="required">
             </td>
         </tr>
      </table><br><br> <br>  
@@ -149,24 +149,19 @@
 			<tr> 
 				<td class="title">${sessionScope.shoppingcart.TITLE}</td>
 				<td >${sessionScope.shoppingcart.TICKETCATEGORY}</td>
-<%-- 				<td >${seat}</td> --%>
 				<td >${seat}</td>
 				<td class="price"></td>
 				<td>
-				<button name="seat" type="submit" value="${seat}" class="btn btn-outline-info" onclick="return del()">刪除</button>
-<%-- 				<input type="button" value="刪除id =${seat}" name="${seat}" class="" id=""> 				 --%>
+				<button name="seat" type="submit" value="${seat}" class="genric-btn success-border radius" onclick="return del()">刪除</button>
 				</td>
 			</tr>
 			</c:forEach>
 			
 		</table>	
  </form>	
-          <input type="submit" value="全部清除" name="clear" class="btn btn-outline-info" id="clear" > 
-          <input type="submit" value="繼續購票" name="1" class="btn btn-outline-info" id="1" form="order">  
+          <input type="submit" value="全部清除" name="clear" class="genric-btn primary-border radius" id="clear" > 
+          <input type="submit" value="繼續購票" name="1" class="genric-btn primary-border radius" id="1" form="order">  
     	
-<%--    		<form name="order" action="<c:url value='/04/delectCart.ctrl'/>" method="GET"> --%>
-<!--           <br><input type="submit" value="全部清除" name="clear" class="btn btn-outline-info" id="clear" onclick="return del()">  -->
-<!--     	 </form> -->
 
 
 </div>   
@@ -184,15 +179,6 @@ $(document).ready(
 					}					 
 				});
 
-
-// 			function del() {
-// 				var msg = "是否刪除?";
-// 				if (confirm(msg) == true) {
-// 				return true;
-// 				} else {
-// 				return false;
-// 				}
-// 			}
 			
 			 $("#clear").click(function () {
 			    	if (confirm("是否清除購物車? ")) {

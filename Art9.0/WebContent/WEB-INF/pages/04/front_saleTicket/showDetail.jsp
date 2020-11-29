@@ -125,7 +125,7 @@ td {
 			</tr>
 		</table>
 		
-				<br><br><input type="submit" class="btn btn-outline-info" value="購買">
+				<br><br><input type="submit" class="genric-btn primary-border radius" value="購買">
 
 		</form>
 		

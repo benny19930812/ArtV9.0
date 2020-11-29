@@ -113,8 +113,8 @@ td {
 		<P>${sessionScope.description}</P><br><br>
 		
 		<H2>訂購票券</H2>
-		<input type="button" class="btn btn-outline-info" value="電腦劃位">
-		<input type="button" class="btn btn-outline-info" value="自行劃位">
+		<input type="button" class="genric-btn success-border radius" value="電腦劃位">
+		<input type="button" class="genric-btn success-border radius" value="自行劃位">
 		<table class="table table-bordered">
 		<tr> 
 				<td>節目名稱</td>
@@ -127,10 +127,13 @@ td {
 			<tr> 
 				<td class="title">${sessionScope.title}</td>
 				<td>
-				<select id="ticketcategry" name="ticketcategry" class="form-control" >
+<!-- 				<div class="default-select" id="default-select" > -->
+										
+				<select id="ticketcategry" name="ticketcategry" class=""  >
 					<option value="全票">全票</option>
 					<option value="半票">半票</option>
 				</select>
+<!-- 									</div> -->
 				</td>
 				<td>自行劃位</td>
 				<td id="price">NT$2000</td>
@@ -142,16 +145,21 @@ td {
 
 		</table>
 
-		<div class="g-recaptcha" data-sitekey="6LcZNusZAAAAAGcGq6PDVePyNXf6f9GTtl-LGcMN"></div>
+		<div class="g-recaptcha" data-sitekey="6Lc94vEZAAAAAMs-vGxyGUXuXB3jucfpLckJTfsC"></div>
+
+		
 		<br> <input type="submit" value="確認數量" name="submit"
-			class="btn btn-outline-info" id="submit">
+			class="genric-btn primary-border radius" id="submit">
+		
+
 	</form>
 	</div>
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 		crossorigin="anonymous"></script>
-
+ 
+ 	 
 	<script>
 	$(document).ready(		
 			function() {
@@ -163,7 +171,7 @@ td {
 					$("#price").text("NT$1000")
 					}					 
 				});
-				//半票
+				//票券數量
 				var count = 0;
 				$("#ticketnum").val(count);
 				$("#plus").click(
@@ -197,80 +205,7 @@ td {
 			}); 
 
 		})
-		
 
-
-
-
-	
-// 		//全票
-// 		$(document).ready(
-// 				function() {
-// 					var count = 0;
-// 					$("#adultnum").val(count);
-// 					$("#plus").click(
-// 							function() {
-// 								//設定數量上限為4
-// 								if (count < 4) {
-// 									count++;
-// 								} else if (count = 4) {
-// 									count = 4;
-// 									alert("最多訂購6張");
-// 								}
-// 								$("#adultnum").val(count);
-// 								$("#total1").val(count * parseInt(1000))
-// 								$("#total3").val(
-// 										count * parseInt(1000) + count2
-// 												* parseInt(500))
-// 							})
-// 					$("#minus").click(
-// 							function() {
-// 								//設定數量下限0
-// 								if (count > 0) {
-// 									count--;
-// 								} else if (count = 0) {
-// 									count = 0;
-// 								}
-// 								$("#adultnum").val(count);
-// 								$("#total1").val(count * parseInt(1000))
-// 								$("#total3").val(
-// 										count * parseInt(1000) + count2
-// 												* parseInt(500))
-// 								return count;
-// 							})
-// 					//半票
-// 					var count2 = 0;
-// 					$("#halfnum").val(count2);
-// 					$("#plus2").click(
-// 							function() {
-// 								if (count2 < 4) {
-// 									count2++;
-// 								} else if (count2 = 4) {
-// 									count2 = 4;
-// 									alert("最多訂購6張");
-// 								}
-// 								$("#halfnum").val(count2);
-// 								$("#total2").val(count2 * parseInt(500))
-// 								$("#total3").val(
-// 										count * parseInt(1000) + count2
-// 												* parseInt(500))
-// 							})
-// 					$("#minus2").click(
-// 							function() {
-// 								if (count2 > 0) {
-// 									count2--;
-// 								} else if (count2 = 0) {
-// 									count2 = 0;
-// 								}
-// 								$("#halfnum").val(count2);
-// 								$("#total2").val(count2 * parseInt(500))
-// 								$("#total3").val(
-// 										count * parseInt(1000) + count2
-// 												* parseInt(500))
-// 							})
-
-// 				})
-		
 	</script>
 
 </body>

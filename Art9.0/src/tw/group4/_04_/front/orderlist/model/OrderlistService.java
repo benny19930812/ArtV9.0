@@ -23,11 +23,6 @@ public class OrderlistService {
 		this.orderlistDAO = orderlistDAO;
 	}
 	
-	public Orderlist searchBean(String orderid) {
-		return orderlistDAO.searchBean(orderid);
-	}
-	
-	
 	public List<Orderlist> searchOrderlist(String memberID) {
 		
 		return orderlistDAO.searchOrderlist(memberID);
@@ -37,6 +32,12 @@ public class OrderlistService {
 		
 		return orderlistDAO.searchOrderid(orderid);
 	}
+	
+	public boolean deleteOrderid(String orderid) {
+		
+		return orderlistDAO.deleteOrderid(orderid);
+	}
+
 
 
 }

@@ -34,12 +34,12 @@ public class OrderlistDAO {
 	public OrderlistDAO(@Qualifier("sessionFactory") SessionFactory sessionFacory) {
 		this.sessionFacory = sessionFacory;
 	}
-	
-	// 查詢單筆
-	public Orderlist searchBean(String orderid) {
-		Session session = sessionFacory.getCurrentSession();
-		return session.get(Orderlist.class, orderid);
-	}
+
+//	// 查詢單筆
+//	public Orderlist searchBean(String orderid) {
+//		Session session = sessionFacory.getCurrentSession();
+//		return session.get(Orderlist.class, orderid);
+//	}
 
 	// 新增
 	public Orderlist insert(Orderlist shoppingcart) {
@@ -48,21 +48,16 @@ public class OrderlistDAO {
 //		if (resultBean == null) {
 		session.save(shoppingcart);
 		return shoppingcart;
-//		}
-//		return null;
 	}
 
-
-	// 查詢 //先將查詢結果放入MAP
-	public Map<String, Integer> select(String memberid) {
-		Session session = sessionFacory.getCurrentSession();
-		Orderlist shoppingcart = session.get(Orderlist.class, memberid);
-
-		Map<String, Integer> map = null;
-		return map;
-	}
-	
-	
+//	// 查詢 //先將查詢結果放入MAP
+//	public Map<String, Integer> select(String memberid) {
+//		Session session = sessionFacory.getCurrentSession();
+//		Orderlist shoppingcart = session.get(Orderlist.class, memberid);
+//
+//		Map<String, Integer> map = null;
+//		return map;
+//	}
 
 	// 修改
 	public Orderlist update(String memberid) {
@@ -71,53 +66,57 @@ public class OrderlistDAO {
 		Orderlist shoppingcart = session.get(Orderlist.class, memberid);
 
 		if (shoppingcart != null) {
-//			SeatBean.setACT_TITLE(title);
-//			SeatBean.setACT_CATEGORY(category);
-//			SeatBean.setACT_LOCATION(locationName);
-//			SeatBean.setACT_MAINUNIT(mainunit);
-//			SeatBean.setACT_SHOWUNIT(showunit);
-//			SeatBean.setACT_DESCRIPTION(description);
-//			SeatBean.setACT_STARTDATE(startdate);
-//			SeatBean.setACT_ENDDATE(enddate);
 		}
 
 		return shoppingcart;
 	}
 
 	// 刪除
-	public boolean delete(String memberid) {
-
-		Session session = sessionFacory.getCurrentSession();
-		Orderlist result = session.get(Orderlist.class, memberid);
-
-		if (result != null) {
-			session.delete(result);
-			return true;
-		}
-
-		return false;
-	}
-
-	
+//	public boolean delete(String memberid) {
+//
+//		Session session = sessionFacory.getCurrentSession();
+//		Orderlist result = session.get(Orderlist.class, memberid);
+//
+//		if (result != null) {
+//			session.delete(result);
+//			return true;
+//		}
+//
+//		return false;
+//	}
 
 	// 查詢會員訂單
 	public List<Orderlist> searchOrderlist(String memberID) {
 		// "From ShowBean"為createQuery
 		//
 		Session session = sessionFacory.getCurrentSession();
-		Query<Orderlist> query = session.createQuery("From Orderlist Odr where Odr.MEMBERID ="+memberID,Orderlist.class);
+		Query<Orderlist> query = session.createQuery("From Orderlist Odr where Odr.MEMBERID =" + memberID,
+				Orderlist.class);
 		List<Orderlist> list = query.list();
 		return list;
 	}
-	
+
 	// 查詢會員訂單
-		public List<Orderlist> searchOrderid(String orderid) {
-			// "From ShowBean"為createQuery
-			//
-			Session session = sessionFacory.getCurrentSession();
-			Query<Orderlist> query = session.createQuery("From Orderlist Odr where Odr.ORDERID ="+orderid,Orderlist.class);
-			List<Orderlist> list = query.list();
-			return list;
-		}
+	public List<Orderlist> searchOrderid(String orderid) {
+		// "From ShowBean"為createQuery
+		//
+		Session session = sessionFacory.getCurrentSession();
+		Query<Orderlist> query = session.createQuery("From Orderlist Odr where Odr.ORDERID =" + orderid,
+				Orderlist.class);
+		List<Orderlist> list = query.list();
+		return list;
+	}
+
+	// 刪除會員訂單
+	public boolean deleteOrderid(String orderid) {
+		Session session = sessionFacory.getCurrentSession();
+		System.out.println("DAO:"+orderid);
+//		String qryString ="delete from Orderlist Odr where Odr.ORDERID=:orderid";
+//		Query query = session.createQuery(qryString);
+//		query.setParameter("orderid", orderid);
+		Query query = session.createQuery("delete from Orderlist Odr where Odr.ORDERID=" + orderid);
+		query.executeUpdate();
+		return true;
+	}
 
 }
