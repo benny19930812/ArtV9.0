@@ -120,9 +120,9 @@ public class ShoppingCartCtrl {
 		// 塞回shoppingcart
 		shoppingcart.setSeats(seats2);
 		// 取得座位數
-		int TicketNUM = shoppingcart.getTICKET_NUM();
-		shoppingcart.setTICKET_NUM(TicketNUM - 1);
-
+		int TicketNUM = seatlist.size();
+		shoppingcart.setTICKET_NUM(seatlist.size());
+		session.setAttribute("shoppingcartnum", TicketNUM);//購物車顯示數字
 		return IdentityFilter.loginID + "04/front_saleTicket/Booking2";
 	}
 
@@ -168,17 +168,18 @@ public class ShoppingCartCtrl {
 		System.out.println("訂單已成立");
 		
 		//寄訂單詳細mail
-		emailServiceImpl.processmailsendAttituate(shoppingcart);
+		emailServiceImpl.processmailsendHTML(shoppingcart);
 			
 		model.addAttribute("orderlistID", orderlistID);
 		model.addAttribute("email", shoppingcart.getEMAIL());
 
-		//清空購物車
+		//清空購物車,未購數量
 		session.removeAttribute("shoppingcart");
+		session.removeAttribute("shoppingcartnum");
 
 		return IdentityFilter.loginID + "04/front_Orderlist/ThxOrder";
 	}
-	
+	//購物車
 	@RequestMapping(path = "/04/goshoppingcart.ctrl", method = RequestMethod.GET)
 	public String goshoppingcart(Model model, HttpSession session, HttpServletRequest Request) {
 		
