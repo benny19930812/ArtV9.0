@@ -14,6 +14,7 @@ import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 
+import org.apache.commons.codec.binary.Base64;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -228,7 +229,11 @@ public class CrudCtrlCMS {
 		// 將DB 日期字串由yyyy/mm/dd改為yyyy-mm-dd
 		String startdate2 = startdate.replace("/", "-");
 		String enddate2 = enddate.replace("/", "-");
-
+		byte[] photo =showBean.getACT_PHOTO();
+//		圖片byteArray透過Base64轉字串，輸出到html
+        String Photoencode = Base64.encodeBase64String(photo);
+		
+		
 		model.addAttribute("actno", actno);
 		model.addAttribute("title", title);
 		model.addAttribute("category", category2);
@@ -241,6 +246,7 @@ public class CrudCtrlCMS {
 		model.addAttribute("enddate", enddate2);
 		model.addAttribute("page", page);
 		model.addAttribute("searchString", searchString);
+		model.addAttribute("photo", Photoencode);
 
 		return IdentityFilter.loginID+"04/cms_Act/UpdateAction";
 	}

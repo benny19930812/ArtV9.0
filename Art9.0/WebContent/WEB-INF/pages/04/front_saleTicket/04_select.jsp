@@ -120,7 +120,7 @@
 		<br>
 
 		<!-- 頁數區 -->
-
+		<div class="d-flex justify-content-center">
 		<div class="btn-toolbar" role="toolbar"
 			aria-label="Toolbar with button groups">
 			<div class="btn-group mr-2" role="group" aria-label="First group">
@@ -143,6 +143,7 @@
 			</div>
 
 
+		</div>
 		</div>
 	</div>
 

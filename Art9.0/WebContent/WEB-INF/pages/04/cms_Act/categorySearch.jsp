@@ -36,6 +36,7 @@
 }
 
 
+
 </style>
 </head>
 <body>
@@ -45,10 +46,7 @@
 		<br>
 		<h1>後臺管理系統:修改活動資訊</h1>
 
-<%-- 		<form method=GET action="<c:url value='/04/CMS/SearchAll.ctrl'/>"> --%>
-<!-- 			<input type=TEXT name="searchString"  class="form-control" placeholder=""id="search">  -->
-<!-- 			<input type=SUBMIT value="查詢" class="btn btn-info" id="searchbut"><br><br> -->
-<!-- 		</form>	 -->
+
 <form method=GET action="<c:url value='/04/CMS/SearchAll.ctrl'/>">
   <div class="form-row align-items-center">
     <div class="col-sm-3 my-1">

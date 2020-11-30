@@ -26,7 +26,7 @@
 	width: 60px;
 }
 .progressbar{
-	width: 200px;
+	width: 100px;
 }
 
 
@@ -53,8 +53,8 @@
 	<c:set var="seat" value="${requestScope.seat}" />
 
 <div class="container">
-<form name="order" action="<c:url value='/04/shoppingcart.ctrl'/>" method="get">
-	<br><br><table>
+<div class="d-flex justify-content-center">
+<br><br><table>
 	<tr >
 		<td class="progressbar">Step 1</td>
 		<td class="progressbar">Step 2</td>
@@ -66,7 +66,7 @@
 		<div class="progress">
 <!-- 		28  -->
 		<a class="process-wizard-dot"></a>
-  		<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 28%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  		<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 53%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 		</div>
 	</td>
 
@@ -78,8 +78,9 @@
 		<td>完成訂購</td>
 	</tr>
 	</table><br>
+</div>
 	
-	
+<form name="order" action="<c:url value='/04/shoppingcart.ctrl'/>" method="get">	
 	<p id="ticketnum" style="display:none">${sessionScope.shoppingcart.TICKET_NUM}</p>
 	<h1>座位表</h1>
 	<h2>請勾選位置</h2>

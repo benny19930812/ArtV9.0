@@ -70,7 +70,7 @@
 
 
 <div class="container">
-
+<div class="d-flex justify-content-center">
 <br><br><table>
 	<tr >
 		<td class="progressbar">Step 1</td>
@@ -95,7 +95,7 @@
 		<td>完成訂購</td>
 	</tr>
 	</table><br>
-
+</div>
 
 <form id="order" name="order2" action="<c:url value='/04/shoppingcart2.ctrl'/> " method="get">
     <H1>訂購人資訊</H1>

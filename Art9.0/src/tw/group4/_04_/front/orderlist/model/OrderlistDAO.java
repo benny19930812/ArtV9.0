@@ -106,6 +106,19 @@ public class OrderlistDAO {
 		List<Orderlist> list = query.list();
 		return list;
 	}
+	
+	// 查詢所有訂單
+		public List<Orderlist> CmsOrderlist() {
+			// "From ShowBean"為createQuery
+			//
+			Session session = sessionFacory.getCurrentSession();
+			Query<Orderlist> query = session.createQuery("From Orderlist Odr ORDER BY Odr.ORDERID",
+					Orderlist.class);
+			List<Orderlist> list = query.list();
+			return list;
+		}
+	
+	
 
 	// 刪除會員訂單
 	public boolean deleteOrderid(String orderid) {

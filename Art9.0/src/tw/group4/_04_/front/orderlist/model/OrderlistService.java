@@ -28,6 +28,11 @@ public class OrderlistService {
 		return orderlistDAO.searchOrderlist(memberID);
 	}
 	
+	public List<Orderlist> CmsOrderlist() {
+		
+		return orderlistDAO.CmsOrderlist();
+	}
+	
 	public List<Orderlist> searchOrderid(String orderid) {
 		
 		return orderlistDAO.searchOrderid(orderid);

@@ -118,6 +118,18 @@ white-space:pre-wrap;
 					<td><textarea rows="8" cols="" name="description"  class="form-control" >${requestScope.description}</textarea>
 					</td>
 				</tr>
+				<tr>
+					<td>圖片</td>
+					<td><img style='display:block;width:400px;' src="data:image/jpg;base64,${photo}" >
+					
+					</td>
+				</tr>
+				<tr>
+					<td>圖片上傳</td>
+					<td><Input Type="File" Name="file">
+					
+					</td>
+				</tr>
 				
 			</table>
 

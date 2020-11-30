@@ -64,11 +64,10 @@ td {
 	<!-- End banner Area -->
 
  
-
-
 <div class="container">
+<div class="d-flex justify-content-center">
 
-	<br><br><table>
+	<table>
 	<tr >
 		<td class="progressbar">Step 1</td>
 		<td class="progressbar">Step 2</td>
@@ -94,7 +93,7 @@ td {
 		
 	</tr>
 	</table><br>
-
+</div>
 
 
 

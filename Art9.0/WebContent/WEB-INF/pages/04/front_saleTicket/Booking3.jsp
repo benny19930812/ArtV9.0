@@ -55,7 +55,7 @@
 	<!-- End banner Area -->
 
 <div class="container">
-
+<div class="d-flex justify-content-center">
 <br><br><table>
 	<tr >
 		<td class="progressbar">Step 1</td>
@@ -80,7 +80,7 @@
 		<td>完成訂購</td>
 	</tr>
 	</table><br><br>
-
+</div>
 
 <form name="order2" action="<c:url value='/04/SaveCart.ctrl'/> " method="get">
     

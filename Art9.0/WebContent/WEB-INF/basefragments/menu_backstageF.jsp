@@ -77,8 +77,8 @@
 				<a class="collapse-item" href="<c:url value='/04/CMS/insert'/>">活動新增</a>
 				<a class="collapse-item" href="<c:url value='/04/index_back' />">活動下架</a>
 				<h6 class="collapse-header">票務修改:</h6>
-				<a class="collapse-item" href="<c:url value='/04/CMS/insert' />">票券訂單查詢</a>
-				<a class="collapse-item" href="<c:url value='/04/index_back' />">票券訂單刪除</a>
+				<a class="collapse-item" href="<c:url value='/04/Cms/SearchOrder.ctrl' />">票券訂單查詢</a>
+				<a class="collapse-item" href="<c:url value='/04/Cms/SearchOrder.ctrl' />">票券訂單刪除</a>
 				<h6 class="collapse-header">座位修改:</h6>
 				<a class="collapse-item" href="<c:url value='/04/CMS/insert' />">活動座位查詢</a>
 				<a class="collapse-item" href="<c:url value='/04/index_back' />">座位修改</a>
