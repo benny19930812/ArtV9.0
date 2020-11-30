@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import tw.group4._04_.back.model.ShowBean;
+import tw.group4._04_.back.cmsAct.model.ShowBean;
 import tw.group4.util.IdentityFilter;
 
 @Controller

@@ -12,10 +12,10 @@
 
 
  <br><br><H1>所有訂單</H1>
- <form method=GET action="<c:url value='/04/CMS/'/>">
+ <form method=GET action="<c:url value='/04/Cms/SearchOneOrder.ctrl'/>">
   <div class="form-row align-items-center">
     <div class="col-sm-3 my-1">
- <input type=TEXT name="searchString"  class="form-control" placeholder=""id="search"> 
+ <input type=TEXT name="orderid"  class="form-control" placeholder=""id=""> 
     </div>  
     <div class="col-sm-3 my-1">
       <input type=SUBMIT value="訂單編號查詢" class="btn btn-info" id="searchbut">

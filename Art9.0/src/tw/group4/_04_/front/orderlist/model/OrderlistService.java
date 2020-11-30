@@ -11,7 +11,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tw.group4._04_.back.model.ShowBeanDAO;
+import tw.group4._04_.back.cmsAct.model.ShowBeanDAO;
 
 @Service
 public class OrderlistService {
@@ -22,6 +22,12 @@ public class OrderlistService {
 	public OrderlistService(OrderlistDAO orderlistDAO) {
 		this.orderlistDAO = orderlistDAO;
 	}
+	
+	// 新增
+		public Orderlist  updateOrderlist(String name,String email,String tel,String add,int orderPK) {
+	
+			return orderlistDAO. updateOrderlist(name,email,tel,add,orderPK);
+		}
 	
 	public List<Orderlist> searchOrderlist(String memberID) {
 		

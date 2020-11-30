@@ -1,4 +1,4 @@
-package tw.group4._04_.back.model;
+package tw.group4._04_.back.cmsAct.model;
 
 import java.io.IOException;
 import java.util.List;

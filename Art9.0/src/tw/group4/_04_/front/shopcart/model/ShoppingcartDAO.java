@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import tw.group4._04_.back.model.ShowBean2;
+import tw.group4._04_.back.cmsAct.model.ShowBean2;
 
 @Repository("ShoppingcartDAO")
 public class ShoppingcartDAO {

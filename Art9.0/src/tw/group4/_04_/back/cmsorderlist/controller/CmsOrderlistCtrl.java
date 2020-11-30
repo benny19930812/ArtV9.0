@@ -1,4 +1,4 @@
-package tw.group4._04_.back.cmsorderlist.controller;
+package tw.group4._04_.back.cmsOrderlist.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,8 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import tw.group4._04_.back.model.ShowBean;
-import tw.group4._04_.back.model.ShowBean2;
+import tw.group4._04_.back.cmsAct.model.ShowBean;
+import tw.group4._04_.back.cmsAct.model.ShowBean2;
 import tw.group4._04_.front.orderlist.model.Orderlist;
 import tw.group4._04_.front.orderlist.model.OrderlistService;
 import tw.group4._04_.front.seat.model.SeatBean;
@@ -41,7 +41,7 @@ public class CmsOrderlistCtrl {
 
 	// 查詢訂單
 	@RequestMapping(path = "/04/Cms/SearchOrder.ctrl", method = RequestMethod.GET)
-	public String booking(Model model, HttpSession session, HttpServletRequest Request) {
+	public String SearchOrder(Model model, HttpSession session, HttpServletRequest Request) {
 
 		WebsiteMember member = (WebsiteMember) session.getAttribute("member");
 
@@ -51,6 +51,26 @@ public class CmsOrderlistCtrl {
 			
 
 			List<Orderlist> orderlists = orderlistService.CmsOrderlist();
+
+				model.addAttribute("orderlists", orderlists);
+
+			}
+			return IdentityFilter.loginID + "04/cms_Orderlist/ShowOrderlist";
+
+		}
+	
+	// 查詢單筆訂單
+	@RequestMapping(path = "/04/Cms/SearchOneOrder.ctrl", method = RequestMethod.GET)
+	public String SearchOneOrder(String orderid,Model model, HttpSession session, HttpServletRequest Request) {
+
+		WebsiteMember member = (WebsiteMember) session.getAttribute("member");
+
+		if (member == null) {
+			return "redirect:/35/loginEntry";
+		} else {
+			
+
+			List<Orderlist> orderlists = orderlistService.searchOrderid(orderid);
 
 				model.addAttribute("orderlists", orderlists);
 
@@ -113,6 +133,41 @@ public class CmsOrderlistCtrl {
 		}
 		return "redirect:/04/Cms/SearchOrder.ctrl?";
 
+	}
+	
+	
+	@RequestMapping(path = "/04/Cms/UpdateOrderlist.ctrl", method = RequestMethod.GET)
+	public String processUpdateOrderlist(String orderid,Model model) {
+		System.out.println("orderid="+orderid);		
+		List<Orderlist> orderlists = orderlistService.searchOrderid(orderid);
+		orderlist = orderlists.get(0);
+		
+		String seatString = orderlist.getSeatstring();
+		System.out.println(seatString);
+		String[] seatarray = seatString.replaceAll("\\[", "").replaceAll("\\]", "").split(",");
+		for (String s : seatarray) {
+			System.out.println(s);
+		}
+		orderlist.setSeats(seatarray);
+		model.addAttribute("orderlist",orderlist);
+		
+		return IdentityFilter.loginID+"04/cms_Orderlist/UpdateOrderlist";
+	}
+	
+	//修改訂單
+	@RequestMapping(path = "/04/Cms/UpdateOrderlist2.ctrl", method = RequestMethod.GET)
+	public String UpdateOrderlist2(String name,String email,String tel,String add,String orderPK,Model model, HttpSession session, HttpServletRequest Request) {
+
+		System.out.println("orderPK"+orderPK);
+		int orderPKint=Integer.parseInt(orderPK);
+		orderlist.setNAME(Request.getParameter("name"));
+		orderlist.setEMAIL(Request.getParameter("email"));
+		orderlist.setTEL(Request.getParameter("tel"));
+		orderlist.setADDRESS(Request.getParameter("add"));
+		orderlistService.updateOrderlist(name, email, tel, add, orderPKint);
+				
+
+		return "redirect:/04/Cms/SearchOrder.ctrl?";
 	}
 	
 	

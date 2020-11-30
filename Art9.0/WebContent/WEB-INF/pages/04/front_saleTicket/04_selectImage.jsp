@@ -97,6 +97,7 @@
 
 		<table class="table table-bordered">
 			<tr>
+				<th class="date">圖片</th>
 				<th class="date">日期</th>
 				<th class="title">節目名稱</th>
 				<th class="site">場地</th>
@@ -108,6 +109,7 @@
 				<tr>
 <!-- 					傳送訂單資訊 -->
 					<form method="GET" action="<c:url value='/04/showDetail.ctrl'/>">
+					<td><img style='display:block;width:200px;height:200px;' src="data:image/jpg;base64,${show.photo}" ></td>
 					<td>${show.startdate}~ ${show.enddate}</td>
 					<td>${show.title}</td>
 					<td>${show.site}</td>

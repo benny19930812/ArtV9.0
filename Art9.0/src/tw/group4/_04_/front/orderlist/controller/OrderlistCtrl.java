@@ -16,8 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import tw.group4._04_.back.model.ShowBean;
-import tw.group4._04_.back.model.ShowBean2;
+import tw.group4._04_.back.cmsAct.model.ShowBean;
+import tw.group4._04_.back.cmsAct.model.ShowBean2;
 import tw.group4._04_.front.orderlist.model.Orderlist;
 import tw.group4._04_.front.orderlist.model.OrderlistService;
 import tw.group4._04_.front.seat.model.SeatBean;

@@ -1,4 +1,4 @@
-package tw.group4._04_.back.controller;
+package tw.group4._04_.back.cmsAct.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import tw.group4._04_.back.model.ShowBean;
-import tw.group4._04_.back.model.ShowBeanService;
+import tw.group4._04_.back.cmsAct.model.ShowBean;
+import tw.group4._04_.back.cmsAct.model.ShowBeanService;
 
 @Controller
 public class TestProductDAO {

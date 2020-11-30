@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tw.group4._04_.back.model.ShowBeanDAO;
+import tw.group4._04_.back.cmsAct.model.ShowBeanDAO;
 
 @Service
 public class SeatBeanService {

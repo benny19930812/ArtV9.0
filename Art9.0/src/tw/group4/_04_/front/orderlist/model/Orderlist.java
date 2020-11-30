@@ -41,6 +41,14 @@ public class Orderlist implements Serializable {
 	public Orderlist(){
 		
 	}
+	
+	public Integer getORDERPK() {
+		return ORDERPK;
+	}
+
+	public void setORDERPK(Integer oRDERPK) {
+		ORDERPK = oRDERPK;
+	}
 
 	public String getMEMBERID() {
 		return MEMBERID;

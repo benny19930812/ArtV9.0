@@ -50,7 +50,7 @@
 						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 						<li><a href="<c:url value='/04/goshoppingcart.ctrl' />"><i class="fas fa-ticket-alt" style="font-size:13px"></i></a>
-						<i class='badge badge-warning' id='lblCartCount'> 0 </i></li>
+						<i class='badge badge-warning' id='lblCartCount'><%=pageContext.getSession().getAttribute("shoppingcartnum") %></i></li>
 						<li><a href="<c:url value='/14/gotoCart.ctrl' />"><i class="fas fa-shopping-cart" style="font-size:13px"></i></a>
 						<i class='badge badge-warning' id='lblCartCount'> <%=pageContext.getSession().getAttribute("carSize") %> </i></li>
 					</ul>
@@ -61,7 +61,7 @@
 		<div class="container">
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a href="index.html"><img
+					<a href="<c:url value='/index.html' />"><img
 						src="<c:url value='/frontstyle/img/aaart.png'/>" alt="" title="" style='display:block; width:230px;height:40px;'/></a>
 				</div>
 				<nav id="nav-menu-container">

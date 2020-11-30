@@ -34,57 +34,78 @@
 </head>
 <body>
 
-<!-- start banner Area -->
-			<section class="banner-area relative" id="home">	
-				<div class="overlay overlay-bg"></div>
-				<div class="container">
-					<div class="row d-flex align-items-center justify-content-center">
-						<div class="about-content col-lg-12">
-							<h1 class="text-white">
-								AAART Shop
-							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="<c:url value='/14/shopListController.ctrl' />"> Shop</a></p>
-						</div>											
-					</div>
-				</div>
-			</section>
-	<!-- End banner Area -->
+
 	
 	<c:set var="seat" value="${requestScope.seat}" />
 
 <div class="container">
-<div class="d-flex justify-content-center">
-<br><br><table>
-	<tr >
-		<td class="progressbar">Step 1</td>
-		<td class="progressbar">Step 2</td>
-		<td class="progressbar">Step 3</td>
-		<td class="progressbar">Step 4</td>
-	</tr>
-	<tr>
-	<td  colspan="4" style="width: 50%">
-		<div class="progress">
-<!-- 		28  -->
-		<a class="process-wizard-dot"></a>
-  		<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 53%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-		</div>
-	</td>
 
-	</tr>
-	<tr>
-		<td>區域/張數</td>
-		<td>劃位</td>
-		<td>購票確認</td>
-		<td>完成訂購</td>
-	</tr>
-	</table><br>
-</div>
+
+
 	
 <form name="order" action="<c:url value='/04/shoppingcart.ctrl'/>" method="get">	
 	<p id="ticketnum" style="display:none">${sessionScope.shoppingcart.TICKET_NUM}</p>
 	<h1>座位表</h1>
-	<h2>請勾選位置</h2>
-	<p>請在灰色空位上點選您要的位置</p>
+	
+	
+	<form>
+	<input type="checkbox" class"dddd" name="dd" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked><br>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked><br>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked><br>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked><br>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked>
+	<input type="checkbox" name="" value="" checked><br>
+	</form>
+
 	<table>
 	<tr>
 		<td>座位資訊</td>
@@ -93,10 +114,7 @@
 	<tr id="selectseattr" >
 		<td>已選擇的座位資訊 </td>
 		<td id="selectseat"></td>
-<!-- 		<input type="hidden" value="" id="" name="seat1"/> -->
-<!-- 		<input type="hidden" value="" id="" name="seat2"/> -->
-<!-- 		<input type="hidden" value="" id="" name="seat3"/> -->
-<!-- 		<input type="hidden" value="" id="" name="seat4"/> -->
+
 	</tr>
 	<tr>
 		<td>已選擇座位數量</td>
@@ -104,6 +122,7 @@
 		<input type="hidden" value="" id="seatnum" name="seatnum"/>
 	</tr>
 	</table>
+
 
 
 	<table>
@@ -181,13 +200,14 @@
 		<tr>
 			<td><img src="<c:url value='/images/04/sofaOff.png' />" alt="" title="" class="sofademo">空位</td>
 			<td><img src="<c:url value='/images/04/sofa.png' />" alt="" title="" class="sofademo">已售出</td>
-			<td><img src="<c:url value='/images/04/sofaTick.png' />" alt="" title=""class="sofademo">已加入購物車</td>
 		</tr>
 	</table>
 	
 	<br><br><input type="submit" id="submit" class="genric-btn primary-border radius" value="下一步" onclick="checknum()">
 	</form>
-</div>	
+</div>
+
+
 	
 <script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -207,31 +227,13 @@
  			$(this).css("border-color", "#FFFFFF")
  		}).click(function() {
  			//座位數量大於4無法選取(換圖片)
- 			if ($(this).attr("src") == "<c:url value='/images/04/sofaOff.png' />" && $(".seat").length <parseInt($("#ticketnum").text())) {
+ 			if ($(this).attr("src") == "<c:url value='/images/04/sofa.png' />" ) {
  	 			//換成選取座位圖
- 				$(this).attr("src", "<c:url value='/images/04/sofaTick.png' />")		
- 				//新增td		
- 				$("#selectseat").append("<td class='seat' id='td"+$(this).attr('id')+"'>"+$(this).attr('id')+"<td>");
- 				$("#selectseat").append("<input type='hidden' id='hide"+$(this).attr('id')+"' name='seat' value='"+$(this).attr('id')+"'/>");				
-				//顯示數量
- 				$("#selectnum").text($(".seat").length);
-//  				$("#seatnum").val($(".seat").length); 
- 				var tickstring=$("#ticketnum").text();
- 				var ticknum =parseInt(tickstring);			
- 				if ($(".seat").length ==parseInt($("#ticketnum").text())) {
- 					alert("已經選擇"+$(".seat").length+"個座位");
- 					
-				}
- 			} else {
+ 				$(this).attr("src", "<c:url value='/images/04/sofaOff.png' />")		 					
+				
+ 			}else {
  	 			//換回空位
- 	 			var id ="td"+$(this).attr('id');
- 	 			var id2 ="hide"+$(this).attr('id');
- 				$(this).attr("src", "<c:url value='/images/04/sofaOff.png' />")
-//   				$("td").remove("#"+id);
- 				$("#"+id).remove();
- 				$("#"+id2).remove();
- 				$("#selectnum").text($(".seat").length);
-//  				$("#seatnum").val($(".seat").length); 
+ 				$(this).attr("src", "<c:url value='/images/04/sofa.png' />")
  			}
  		});    	
 

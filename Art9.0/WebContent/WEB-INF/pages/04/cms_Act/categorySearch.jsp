@@ -125,8 +125,7 @@
 						<td>${show.title}</td>
 						<td>${show.site}</td>
 
-							<td>
-<!-- 						<form name="order" action="/04/CMS/update1.ctrl" method="get"> -->
+						<td> 				
 						<form name="order" action="<c:url value='/04/CMS/Update1.ctrl'/>" method="get">
 								<button name="" type="submit" value="" class="btn btn-info">修改</button>
 							<!-- 這些隱藏欄位都會送到後端 -->
@@ -134,23 +133,25 @@
 							<Input type='hidden' name='page' value='${page}'>
 							<Input type='hidden' name='category' value='${category}'>
 						</form>
-							</td>
+						</td>
 
 						<td>
-<!-- 						<form name="order" action="/04/CMS/delete.ctrl" method="get"> -->
 						<form name="order" action="<c:url value='/04/CMS/Delete.ctrl'/>" method="get">
 								<button name="actno" type="submit" value=${show.no} class="btn btn-info" onclick="return del()">刪除</button>
 							<!-- 這些隱藏欄位都會送到後端 -->
 							<Input type='hidden' name='page' value='${page}'> <Input type='hidden' name='category' value='${category}'>
 						</form>
 						</td>
+						<td>
+						<form name="order" action="<c:url value='/04/CMS/seatSearch.ctrl'/>" method="get">
+								<button name="actno" type="submit" value=${show.no} class="btn btn-info" >座位</button>
+							<!-- 這些隱藏欄位都會送到後端 -->
+							<Input type='hidden' name='page' value='${page}'> <Input type='hidden' name='category' value='${category}'>
+						</form>
+						</td>
 						
 						<td>
-<%-- 						<form name="order" action="<c:url value='/04/CMS/Delete.ctrl'/>" method="get"> --%>
-<!-- 								<button name="actno" type="submit" value=${show.no} class="btn btn-info" onclick="return del()">詳ㄒㄧ</button> -->
-<!-- 							這些隱藏欄位都會送到後端 -->
-<%-- 							<Input type='hidden' name='page' value='${page}'> <Input type='hidden' name='category' value='${category}'> --%>
-<!-- 						</form> -->
+
 						</td>
 						<Input type='hidden' name='page' value='${page}'>
 						<Input type='hidden' name='category' value='${category}'>

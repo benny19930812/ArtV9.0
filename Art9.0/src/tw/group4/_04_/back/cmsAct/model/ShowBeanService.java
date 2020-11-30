@@ -1,4 +1,4 @@
-package tw.group4._04_.back.model;
+package tw.group4._04_.back.cmsAct.model;
 
 import java.io.IOException;
 import java.util.List;
@@ -43,17 +43,29 @@ public class ShowBeanService {
 		return SDao.selectAll();
 	}
 	
-	public List<ShowBean2>selectAll_startdate() {	
-		return SDao.selectAll_startdate();
-	}
 	
 	public List<ShowBean2> selectAll_category(int category) {
 		
 		return SDao.selectAll_category(category);
 	}
 	
+	public List<ShowBean> selectAll_categoryTEST(int category) {
+		
+		return SDao.selectAll_categoryTEST(category);
+	}
+	
+	public List<ShowBean2>selectAll_startdate() {	
+		return SDao.selectAll_startdate();
+	}
 	public List<ShowBean2> selectAll_enddate() {
 		return SDao.selectAll_enddate();
+	}
+	
+	public List<ShowBean>selectAll_startdateTEST() {	
+		return SDao.selectAll_startdateTEST();
+	}
+	public List<ShowBean> selectAll_enddateTEST() {
+		return SDao.selectAll_enddateTEST();
 	}
 	
 	
@@ -84,6 +96,9 @@ public class ShowBeanService {
 
 	public List<ShowBean2> find(String searchString){
 		return SDao.find(searchString);
+	}
+	public List<ShowBean> findTEST(String searchString){
+		return SDao.findTEST(searchString);
 	}
 
 }

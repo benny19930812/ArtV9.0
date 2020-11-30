@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import tw.group4._04_.back.model.ShowBean;
-import tw.group4._04_.back.model.ShowBean2;
+import tw.group4._04_.back.cmsAct.model.ShowBean;
+import tw.group4._04_.back.cmsAct.model.ShowBean2;
 import tw.group4._04_.front.seat.model.SeatBean;
 
 @Repository("OrderlistDAO")
@@ -60,15 +60,21 @@ public class OrderlistDAO {
 //	}
 
 	// 修改
-	public Orderlist update(String memberid) {
+	public Orderlist  updateOrderlist(String name,String email,String tel,String add,int orderPK) {
 
 		Session session = sessionFacory.getCurrentSession();
-		Orderlist shoppingcart = session.get(Orderlist.class, memberid);
+		Orderlist orderlist = session.get(Orderlist.class, orderPK);
 
-		if (shoppingcart != null) {
+		
+		if (orderlist != null) {
+			orderlist.setNAME(name);
+			orderlist.setEMAIL(email);
+			orderlist.setTEL(tel);
+			orderlist.setADDRESS(add);
+		
 		}
 
-		return shoppingcart;
+		return orderlist;
 	}
 
 	// 刪除

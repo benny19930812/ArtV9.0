@@ -1,4 +1,4 @@
-package tw.group4._04_.back.model;
+package tw.group4._04_.back.cmsAct.model;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,7 +16,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-
 
 @Repository("showBeanDao")
 public class ShowBeanDAO {
@@ -51,8 +50,8 @@ public class ShowBeanDAO {
 		Session session = sessionFacory.getCurrentSession();
 //		ShowBean resultBean = session.get(ShowBean.class, showbean.getACT_NO());
 //		if (resultBean == null) {
-			session.save(showbean);
-			return showbean;
+		session.save(showbean);
+		return showbean;
 //		}
 //		return null;
 	}
@@ -72,39 +71,75 @@ public class ShowBeanDAO {
 		List<ShowBean2> list = query.list();
 		return list;
 	}
-	
+
+	// 查詢分類 開始日期排序
+	public List<ShowBean2> selectAll_category(int category) {
+		// "From ShowBean"為createQuery
+		//
+		Session session = sessionFacory.getCurrentSession();
+		Query<ShowBean2> query = session.createQuery(
+				"From ShowBean2 SB2 where SB2.ACT_CATEGORY=" + category + "ORDER BY SB2.ACT_STARTDATE",
+				ShowBean2.class);
+
+		List<ShowBean2> list = query.list();
+		return list;
+	}
+
+	// 查詢分類 開始日期排序
+	public List<ShowBean> selectAll_categoryTEST(int category) {
+		// "From ShowBean"為createQuery
+		//
+		Session session = sessionFacory.getCurrentSession();
+		Query<ShowBean> query = session.createQuery(
+				"From ShowBean SB where SB.ACT_CATEGORY=" + category + "ORDER BY SB.ACT_STARTDATE", ShowBean.class);
+		query.setFirstResult(1);
+		query.setMaxResults(100);
+		List<ShowBean> list = query.list();
+		return list;
+	}
+
 	// 查詢多筆 開始日期排序
-		public List<ShowBean2> selectAll_startdate() {
-			// "From ShowBean"為createQuery
-			//
-			Session session = sessionFacory.getCurrentSession();
-			Query<ShowBean2> query = session.createQuery("From ShowBean2 SB2 ORDER BY SB2.ACT_STARTDATE", ShowBean2.class);
-//			Query<ShowBean> query = session.createQuery("SELECT NEW ShowBean( aCT_NO,  aCT_TITLE,  aCT_CATEGORY, aCT_LOCATION, aCT_LOCATION_NAME,aCT_ON_SALES, aCT_PRICE,  aCT_TIME,  aCT_ENDTIME,  aCT_MAINUNIT,aCT_SHOWUNIT, aCT_COMMENT,  aCT_DESCRIPTION, aCT_IMAGE,aCT_STARTDATE,aCT_ENDDATE )FROM ShowBean ORDER BY SB.ACT_STARTDATE", ShowBean.class);
-			List<ShowBean2> list = query.list();
-			return list;
-		}
-		
-		// 查詢分類  開始日期排序
-				public List<ShowBean2> selectAll_category(int category) {
-					// "From ShowBean"為createQuery
-					//
-					Session session = sessionFacory.getCurrentSession();
-					Query<ShowBean2> query = session.createQuery("From ShowBean2 SB2 where SB2.ACT_CATEGORY="+category+"ORDER BY SB2.ACT_STARTDATE", ShowBean2.class);
-					List<ShowBean2> list = query.list();
-					return list;
-				}
-		
-		
-		
-		// 查詢多筆 結束日期排序
-		public List<ShowBean2> selectAll_enddate() {
-			// "From ShowBean"為createQuery
-			//
-			Session session = sessionFacory.getCurrentSession();
-			Query<ShowBean2> query = session.createQuery("From ShowBean2 SB2 ORDER BY SB2.ACT_ENDDATE", ShowBean2.class);
-			List<ShowBean2> list = query.list();
-			return list;
-		}
+	public List<ShowBean2> selectAll_startdate() {
+		// "From ShowBean"為createQuery
+		//
+		Session session = sessionFacory.getCurrentSession();
+		Query<ShowBean2> query = session.createQuery("From ShowBean2 SB2 ORDER BY SB2.ACT_STARTDATE", ShowBean2.class);
+		List<ShowBean2> list = query.list();
+		return list;
+	}
+
+	// 查詢多筆 結束日期排序
+	public List<ShowBean2> selectAll_enddate() {
+		// "From ShowBean"為createQuery
+		//
+		Session session = sessionFacory.getCurrentSession();
+		Query<ShowBean2> query = session.createQuery("From ShowBean2 SB2 ORDER BY SB2.ACT_ENDDATE", ShowBean2.class);
+		List<ShowBean2> list = query.list();
+		return list;
+	}
+	// 查詢多筆 開始日期排序
+	public List<ShowBean> selectAll_startdateTEST() {
+		// "From ShowBean"為createQuery
+		//
+		Session session = sessionFacory.getCurrentSession();
+		Query<ShowBean> query = session.createQuery("From ShowBean SB ORDER BY SB.ACT_STARTDATE", ShowBean.class);
+		query.setFirstResult(1);
+		query.setMaxResults(100);
+		List<ShowBean> list = query.list();
+		return list;
+	}
+	
+	// 查詢多筆 結束日期排序
+	public List<ShowBean> selectAll_enddateTEST() {
+		// "From ShowBean"為createQuery
+		//
+		Session session = sessionFacory.getCurrentSession();
+		Query<ShowBean> query = session.createQuery("From ShowBean SB ORDER BY SB.ACT_ENDDATE", ShowBean.class);
+		query.setFirstResult(1);
+		query.setMaxResults(100);
+		List<ShowBean> list = query.list();
+		return list;
+	}
 
 	// 查詢多筆+分頁
 	public List<ShowBean> selectAll2() {
@@ -132,23 +167,25 @@ public class ShowBeanDAO {
 //		List<ShowBean> list = query.list();
 //		return list;
 //	}
-	
+
 	// 查詢分類+多筆+分頁
-	public List<ShowBean> selectAll3(int pageNo,int category) {
-		//全部查詢
+	public List<ShowBean> selectAll3(int pageNo, int category) {
+		// 全部查詢
 		Session session = sessionFacory.getCurrentSession();
 		String countQ = "Select count (SB.ACT_NO) From ShowBean SB";
 		Query countQuery = session.createQuery(countQ);
 		Long countResult = (Long) countQuery.uniqueResult();
 		int lastPageNum = (int) (Math.ceil(countResult / pageSize));
 
-		Query<ShowBean> query = session.createQuery("From ShowBean SB WHERE SB.ACT_CATEGORY="+category+"ORDER BY SB.ACT_NO", ShowBean.class);
+		Query<ShowBean> query = session.createQuery(
+				"From ShowBean SB WHERE SB.ACT_CATEGORY=" + category + "ORDER BY SB.ACT_NO", ShowBean.class);
 		query.setFirstResult((pageNo - 1) * pageSize);
 		query.setMaxResults(pageSize);
 		List<ShowBean> list = query.list();
 		return list;
 	}
-	//計算數量
+
+	// 計算數量
 	public int selectCount() {
 		Session session = sessionFacory.getCurrentSession();
 		int count = 0;
@@ -165,6 +202,7 @@ public class ShowBeanDAO {
 
 		return count;
 	}
+
 	// 計算總數
 	public int getTotalPages() {
 		Session session = sessionFacory.getCurrentSession();
@@ -223,9 +261,22 @@ public class ShowBeanDAO {
 
 		Session session = sessionFacory.getCurrentSession();
 		String queryString = "from ShowBean2 where ACT_TITLE like'%" + searchString + "%'";
-		Query queryObject = session.createQuery(queryString);
+		Query query = session.createQuery(queryString);
 
-		return queryObject.list();
+		return query.list();
+
+	}
+
+	// 模糊查詢
+	// find內預設傳入String searchString參數
+	public List<ShowBean> findTEST(String searchString) {
+
+		Session session = sessionFacory.getCurrentSession();
+		String queryString = "from ShowBean where ACT_TITLE like'%" + searchString + "%'";
+		Query query = session.createQuery(queryString);
+		query.setFirstResult(1);
+		query.setMaxResults(100);
+		return query.list();
 
 	}
 
